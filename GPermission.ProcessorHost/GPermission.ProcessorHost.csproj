@@ -1,0 +1,166 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{8EB00FBB-1814-46AA-BF81-DC9C5603CD84}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GPermission.ProcessorHost</RootNamespace>
+    <AssemblyName>GPermission.ProcessorHost</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Autofac, Version=3.5.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.3.5.2\lib\net40\Autofac.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Dapper, Version=1.40.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.1.42\lib\net45\Dapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ECommon, Version=2.0.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ECommon.2.0.2\lib\net45\ECommon.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ENode, Version=2.7.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ENode.2.7.1\lib\net45\ENode.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EQueue, Version=2.0.7.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\EQueue.2.0.7\lib\net45\EQueue.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.13.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="protobuf-net, Version=2.0.0.668, Culture=neutral, PublicKeyToken=257b51d87d2e4d67, processorArchitecture=MSIL">
+      <HintPath>..\packages\protobuf-net.2.0.0.668\lib\net40\protobuf-net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration.Install" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Bootstrap.cs" />
+    <Compile Include="ENodeExtensions.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="ProjectInstaller.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ProjectInstaller.Designer.cs">
+      <DependentUpon>ProjectInstaller.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service1.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Service1.Designer.cs">
+      <DependentUpon>Service1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TopicProviders\ApplicationMessageTopicProvider.cs" />
+    <Compile Include="TopicProviders\DomainEventTopicProvider.cs" />
+    <Compile Include="TopicProviders\ExceptionTopicProvider.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GPermission.ApplicationServices\GPermission.ApplicationServices.csproj">
+      <Project>{95bf0929-6688-4b85-8a19-886ef6546e36}</Project>
+      <Name>GPermission.ApplicationServices</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GPermission.CommandHandlers\GPermission.CommandHandlers.csproj">
+      <Project>{f30af610-5084-4469-ab41-29976d952837}</Project>
+      <Name>GPermission.CommandHandlers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GPermission.Commands\GPermission.Commands.csproj">
+      <Project>{9fe1981a-baad-4d2d-9c1f-9c8dd1b5e074}</Project>
+      <Name>GPermission.Commands</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GPermission.Common\GPermission.Common.csproj">
+      <Project>{5d346cb6-9956-492b-8ab4-25c0f340d106}</Project>
+      <Name>GPermission.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GPermission.Denormalizers\GPermission.Denormalizers.csproj">
+      <Project>{5b13c2dc-8236-42ef-a313-e2d04ccf4bff}</Project>
+      <Name>GPermission.Denormalizers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GPermission.Domain\GPermission.Domain.csproj">
+      <Project>{a81cf540-2e7b-4eee-b04f-481cfcfe04e6}</Project>
+      <Name>GPermission.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GPermission.IQueryServices\GPermission.IQueryServices.csproj">
+      <Project>{3fde0207-5bbe-4c29-a824-038134f4e698}</Project>
+      <Name>GPermission.IQueryServices</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GPermission.MessagePublishers\GPermission.MessagePublishers.csproj">
+      <Project>{fdef7400-da35-4462-a428-b4ed58f65e1b}</Project>
+      <Name>GPermission.MessagePublishers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GPermission.Messages\GPermission.Messages.csproj">
+      <Project>{6d45e762-cb79-470b-9235-dbfce5f8ce54}</Project>
+      <Name>GPermission.Messages</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GPermission.ProcessManagers\GPermission.ProcessManagers.csproj">
+      <Project>{5425c9b0-75a7-44e4-9b93-1d6cb23b860d}</Project>
+      <Name>GPermission.ProcessManagers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GPermission.QueryServices\GPermission.QueryServices.csproj">
+      <Project>{8ccf1d74-90e6-4dbb-a56b-66e23346cb80}</Project>
+      <Name>GPermission.QueryServices</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GPermission.Repositories.Dapper\GPermission.Repositories.Dapper.csproj">
+      <Project>{3d6c6049-1a59-4f62-a122-45434eee6d4c}</Project>
+      <Name>GPermission.Repositories.Dapper</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ProjectInstaller.resx">
+      <DependentUpon>ProjectInstaller.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

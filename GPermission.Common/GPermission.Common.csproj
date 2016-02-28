@@ -40,6 +40,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assert.cs" />
+    <Compile Include="Enums\Common\BoolEnum.cs" />
+    <Compile Include="Enums\Common\IsEnabledEnum.cs" />
+    <Compile Include="Enums\Common\UseFlag.cs" />
+    <Compile Include="Exceptions\AbstractException.cs" />
+    <Compile Include="Exceptions\InLockException.cs" />
+    <Compile Include="Exceptions\NotExistException.cs" />
+    <Compile Include="Exceptions\NotInEnumException.cs" />
+    <Compile Include="Exceptions\OutBoundsException.cs" />
+    <Compile Include="Exceptions\RepeatException.cs" />
+    <Compile Include="Exceptions\UnavailableException.cs" />
+    <Compile Include="Exceptions\ValidateException.cs" />
     <Compile Include="Topics.cs" />
     <Compile Include="ConfigSettings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

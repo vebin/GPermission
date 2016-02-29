@@ -1,5 +1,7 @@
 ﻿using ECommon.Components;
+using GPermission.Common;
 using GPermission.Domain.Repositories;
+using GPermission.Domain.Users;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,7 +25,22 @@ namespace GPermission.Domain.Services
         /// </summary>
         public void RegisterUserCodeIndex(string userId, string code)
         {
-           
+            var codeIndex = _userIndexRepository.FindByCode(code);
+            if (codeIndex == null)
+            {
+                _userIndexRepository.Add(new UserCodeIndex(userId, code));
+            }
+            else
+            {
+                throw new RepeatException("");
+            }
+        }
+
+        /// <summary>删除用户代码索引
+        /// </summary>
+        public void DeleteUserCodeIndex(string userId, string code = "")
+        {
+            _userIndexRepository.Delete(new UserCodeIndex(userId, code));
         }
     }
 }

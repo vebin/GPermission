@@ -42,5 +42,10 @@ namespace GPermission.Domain.Services
         {
             _roleIndexRepository.Delete(new RoleCodeIndex(roleId, code));
         }
+
+        public void IsEnabled(string roleId)
+        {
+
+        }
     }
 }

@@ -23,7 +23,35 @@ namespace GPermission.Domain.Users
         /// </summary>
         public User(string id, UserInfo info) : base(id)
         {
+            Assert.IsNotNullOrEmpty("用户代码", info.Code);
+            Assert.IsNotNullOrEmpty("用户名称", info.UserName);
+            ApplyEvent(new UserCreated(this, info));
+        }
 
+        /// <summary>添加用户角色
+        /// </summary>
+        public void AddUserRole(List<string> roleIds)
+        {
+            foreach (var roleId in roleIds)
+            {
+                if (_roles.Contains(roleId))
+                {
+                    throw new RepeatException("该角色已经存在");
+                }
+            }
+            ApplyEvent(new UserRoleAdded(this, roleIds));
+        }
+
+        /// <summary>删除用户角色
+        /// </summary>
+        public void RemoveUserRole(string roleId)
+        {
+            var id = _roles.Where(x => x == roleId).FirstOrDefault();
+            if (string.IsNullOrEmpty(id))
+            {
+                throw new NotExistException("该用户的权限不存在");
+            }
+            ApplyEvent(new UserRoleRemoved(this, roleId));
         }
 
         /// <summary>删除用户
@@ -34,8 +62,6 @@ namespace GPermission.Domain.Users
             ApplyEvent(new UserChanged(this, useFlag));
         }
 
-
-
         #region Event Handle Methods
         private void Handle(UserCreated evnt)
         {
@@ -44,6 +70,19 @@ namespace GPermission.Domain.Users
             _roles = new List<string>();
             _status = "";
             _useFlag = (int)UseFlag.Useable;
+        }
+
+        private void Handle(UserRoleAdded evnt)
+        {
+            foreach (var roleId in evnt.RoleIds)
+            {
+                _roles.Add(roleId);
+            }
+        }
+
+        private void Handle(UserRoleRemoved evnt)
+        {
+            _roles.Remove(evnt.RoleId);
         }
 
         private void Handle(UserChanged evnt)

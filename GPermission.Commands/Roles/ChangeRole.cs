@@ -11,7 +11,6 @@ namespace GPermission.Commands.Roles
     /// </summary>
     public class ChangeRole : Command<string>
     {
-        public string AppSystemId { get; set; }
         public int UseFlag { get; set; }
 
         public ChangeRole()
@@ -19,9 +18,8 @@ namespace GPermission.Commands.Roles
 
         }
 
-        public ChangeRole(string id,string appSystemId, int useFlag) : base(id)
+        public ChangeRole(string id, int useFlag) : base(id)
         {
-            AppSystemId = appSystemId;
             UseFlag = useFlag;
         }
     }

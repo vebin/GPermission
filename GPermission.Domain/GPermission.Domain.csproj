@@ -93,6 +93,8 @@
     <Compile Include="Roles\RoleChanged.cs" />
     <Compile Include="Roles\RoleCreated.cs" />
     <Compile Include="Roles\RoleInfo.cs" />
+    <Compile Include="Users\UserRoleAdded.cs" />
+    <Compile Include="Users\UserRoleRemoved.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

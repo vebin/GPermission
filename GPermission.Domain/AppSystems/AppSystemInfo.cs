@@ -17,7 +17,9 @@ namespace GPermission.Domain.AppSystems
         /// <summary>应用名称
         /// </summary>
         public string Name { get; set; }
-
+        /// <summary>备注
+        /// </summary>
+        public string ReMark { get; set; }
         /// <summary>创建时间
         /// </summary>
         public DateTime CreateTime { get; set; }
@@ -27,9 +29,12 @@ namespace GPermission.Domain.AppSystems
 
         }
 
-        public AppSystemInfo(string code,string name)
+        public AppSystemInfo(string code, string name, string reMark = "")
         {
-
+            Code = code;
+            Name = name;
+            ReMark = reMark;
+            CreateTime = DateTime.Now;
         }
     }
 }

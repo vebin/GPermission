@@ -16,11 +16,25 @@ namespace GPermission.Common
         /// <summary>主库连接字符串
         /// </summary>
         public static string GPermissionConnectionString { get; set; }
+        /// <summary>应用系统表
+        /// </summary>
+        public static string AppSystemTable { get; set; }
+        /// <summary>应用系统代码索引表
+        /// </summary>
+        public static string AppSystemCodeIndexTable { get; set; }
+        /// <summary>角色表
+        /// </summary>
+        public static string RoleTable { get; set; }
+        /// <summary>角色代码索引表
+        /// </summary>
+        public static string RoleCodeIndexTable { get; set; }
 
-
-    
-
-
+        /// <summary>用户表
+        /// </summary>
+        public static string UserTable { get; set; }
+        /// <summary>用户代码索引表
+        /// </summary>
+        public static string UserCodeIndexTable { get; set; }
   
 
         public static int BrokerProducerPort { get; set; }
@@ -39,8 +53,12 @@ namespace GPermission.Common
                 GPermissionConnectionString = ConfigurationManager.ConnectionStrings["GPermission"].ConnectionString;
             }
 
-
-
+            AppSystemTable = "AppSystem";
+            AppSystemCodeIndexTable = "AppSystemCodeIndex";
+            RoleTable = "Role";
+            RoleCodeIndexTable = "RoleCodeIndex";
+            UserTable = "User";
+            UserCodeIndexTable = "UserCodeIndex";
 
             BrokerProducerPort = 10000;
             BrokerConsumerPort = 10001;

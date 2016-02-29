@@ -1,4 +1,5 @@
 ﻿using ENode.Domain;
+using GPermission.Common;
 using GPermission.Common.Enums;
 using System;
 using System.Collections.Generic;
@@ -29,13 +30,13 @@ namespace GPermission.Domain.Users
         /// </summary>
         public void Change(int useFlag)
         {
-
+            Assert.IsNotInEnum("删除标志", typeof(UseFlag), useFlag);
+            ApplyEvent(new UserChanged(this, useFlag));
         }
 
 
 
         #region Event Handle Methods
-        //创建
         private void Handle(UserCreated evnt)
         {
             _id = evnt.AggregateRootId;
@@ -45,7 +46,6 @@ namespace GPermission.Domain.Users
             _useFlag = (int)UseFlag.Useable;
         }
 
-        //删除
         private void Handle(UserChanged evnt)
         {
             _useFlag = evnt.UseFlag;

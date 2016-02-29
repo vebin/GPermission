@@ -25,12 +25,11 @@ namespace GPermission.Domain.AppSystems
 
 
         #region Event Handle Methods
-        //创建
         private void Handle(AppSystemCreated evnt)
         {
             _id = evnt.AggregateRootId;
             _info = evnt.Info;
-            _status = "";
+            _status = "1";
             _useFlag = (int)UseFlag.Useable;
         }
 

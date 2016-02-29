@@ -13,14 +13,16 @@ namespace GPermission.Domain.Roles
     public class RoleCreated : DomainEvent<string>
     {
         public RoleInfo Info { get; private set; }
+        public int IsEnabled { get; private set; }
 
         public RoleCreated()
         {
 
         }
-        public RoleCreated(Role role,RoleInfo info) : base()
+        public RoleCreated(Role role,RoleInfo info,int isEnabled) : base()
         {
             Info = info;
+            IsEnabled = isEnabled;
         }
     }
 }

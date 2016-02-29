@@ -1,4 +1,5 @@
 ﻿using ENode.Domain;
+using GPermission.Common;
 using GPermission.Common.Enums;
 using System;
 using System.Collections.Generic;
@@ -14,20 +15,34 @@ namespace GPermission.Domain.Roles
     public class Role : AggregateRoot<string>
     {
         private RoleInfo _info;
-        private string _status;
+        private int _isEnabled;
         private int _useFlag;
 
+        public Role(string id, RoleInfo info, int isEnabled) : base(id)
+        {
+            Assert.IsNotNullOrEmpty("角色名称", info.Name);
+            Assert.IsNotNullOrEmpty("角色代码", info.Code);
+            Assert.IsNotInEnum("启用标志", typeof(IsEnabledEnum), isEnabled);
+            ApplyEvent(new RoleCreated(this, info, isEnabled));
+        }
+
+        public void Change(int useFlag)
+        {
+            Assert.IsNotInEnum("删除标志", typeof(UseFlag), useFlag);
+            ApplyEvent(new RoleChanged(this, useFlag));
+        }
+
+
         #region Event Handle Methods
-        //创建
+   
         private void Handle(RoleCreated evnt)
         {
             _id = evnt.AggregateRootId;
             _info = evnt.Info;
-            _status = "";
+            _isEnabled = evnt.IsEnabled;
             _useFlag = (int)UseFlag.Useable;
         }
 
-        //删除
         private void Handle(RoleChanged evnt)
         {
             _useFlag = evnt.UseFlag;

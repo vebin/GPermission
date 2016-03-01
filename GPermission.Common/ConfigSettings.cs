@@ -39,6 +39,15 @@ namespace GPermission.Common
         /// </summary>
         public static string UserRoleTable { get; set; }
 
+        /// <summary>账号表
+        /// </summary>
+        public static string AccountTable { get; set; }
+        /// <summary>账号,应用系统关联表
+        /// </summary>
+        public static string AccountAppSystemTable { get; set; }
+
+
+
         public static int BrokerProducerPort { get; set; }
         public static int BrokerConsumerPort { get; set; }
         public static int BrokerAdminPort { get; set; }
@@ -62,6 +71,9 @@ namespace GPermission.Common
             UserTable = "User";
             UserCodeIndexTable = "UserCodeIndex";
             UserRoleTable = "UserRole";
+
+            AccountTable = "Account";
+            AccountAppSystemTable = "AccountAppSystem";
 
             BrokerProducerPort = 10000;
             BrokerConsumerPort = 10001;

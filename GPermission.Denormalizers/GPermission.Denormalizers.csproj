@@ -72,6 +72,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AbstractDenormalizer.cs" />
+    <Compile Include="AccountDenormalizer.cs" />
     <Compile Include="AppSystemDenormalizer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RoleDenormalizer.cs" />

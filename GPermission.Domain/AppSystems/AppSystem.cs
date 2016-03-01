@@ -27,6 +27,7 @@ namespace GPermission.Domain.AppSystems
             Assert.IsNotNullOrEmpty("应用系统代码", info.Code);
             ApplyEvent(new AppSystemCreated(this, info,safeKey));
         }
+
         /// <summary>删除应用系统
         /// </summary>
         public void Change(int useFlag)

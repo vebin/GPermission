@@ -75,6 +75,9 @@
     <Compile Include="Accounts\AccountChanged.cs" />
     <Compile Include="Accounts\AccountCreated.cs" />
     <Compile Include="Accounts\AccountInfo.cs" />
+    <Compile Include="Accounts\AppSystemAdded.cs" />
+    <Compile Include="Accounts\AppSystemRemoved.cs" />
+    <Compile Include="Accounts\AppSystemReset.cs" />
     <Compile Include="AppSystems\AppSystemCodeIndex.cs" />
     <Compile Include="Repositories\IAppSystemIndexRepository.cs" />
     <Compile Include="Repositories\IRoleIndexRepository.cs" />

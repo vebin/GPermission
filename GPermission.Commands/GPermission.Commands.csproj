@@ -71,6 +71,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Accounts\AddAppSystem.cs" />
+    <Compile Include="Accounts\ChangeAccount.cs" />
+    <Compile Include="Accounts\CreateAccount.cs" />
+    <Compile Include="Accounts\RemoveAppSystem.cs" />
+    <Compile Include="Accounts\ResetAppSystem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Roles\ChangeRole.cs" />
     <Compile Include="Roles\CreateRole.cs" />

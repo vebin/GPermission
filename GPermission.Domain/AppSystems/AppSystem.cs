@@ -1,4 +1,5 @@
 ﻿using ENode.Domain;
+using GPermission.Common;
 using GPermission.Common.Enums;
 using System;
 using System.Collections.Generic;
@@ -14,22 +15,32 @@ namespace GPermission.Domain.AppSystems
     public class AppSystem : AggregateRoot<string>
     {
         private AppSystemInfo _info;
+        private string _safeKey;
         private string _status;
         private int _useFlag;
 
         /// <summary>创建应用系统
         /// </summary>
-        public AppSystem(string id, AppSystemInfo info) : base(id)
+        public AppSystem(string id, AppSystemInfo info,string safeKey) : base(id)
         {
-            ApplyEvent(new AppSystemCreated(this, info));
+            Assert.IsNotNullOrEmpty("应用系统名称", info.Name);
+            Assert.IsNotNullOrEmpty("应用系统代码", info.Code);
+            ApplyEvent(new AppSystemCreated(this, info,safeKey));
         }
-
+        /// <summary>删除应用系统
+        /// </summary>
+        public void Change(int useFlag)
+        {
+            Assert.IsNotInEnum("删除标志", typeof(UseFlag), useFlag);
+            ApplyEvent(new AppSystemChanged(this, useFlag));
+        }
 
         #region Event Handle Methods
         private void Handle(AppSystemCreated evnt)
         {
             _id = evnt.AggregateRootId;
             _info = evnt.Info;
+            _safeKey = evnt.SafeKey;
             _status = "1";
             _useFlag = (int)UseFlag.Useable;
         }

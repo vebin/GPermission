@@ -13,15 +13,16 @@ namespace GPermission.Domain.AppSystems
     public class AppSystemCreated : DomainEvent<string>
     {
         public AppSystemInfo Info { get; private set; }
-
+        public string SafeKey { get; private set; }
         public AppSystemCreated()
         {
 
         }
 
-        public AppSystemCreated(AppSystem appSystem,AppSystemInfo info) : base()
+        public AppSystemCreated(AppSystem appSystem,AppSystemInfo info,string safeKey) : base()
         {
             Info = info;
+            SafeKey = safeKey;
         }
     }
 }

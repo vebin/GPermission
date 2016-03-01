@@ -54,6 +54,13 @@ namespace GPermission.Domain.Users
             ApplyEvent(new UserRoleRemoved(this, roleId));
         }
 
+        /// <summary>重置用户角色
+        /// </summary>
+        public void ResetUserRole(List<string> roleIds)
+        {
+            ApplyEvent(new UserRoleReset(this, roleIds));
+        }
+
         /// <summary>删除用户
         /// </summary>
         public void Change(int useFlag)
@@ -83,6 +90,11 @@ namespace GPermission.Domain.Users
         private void Handle(UserRoleRemoved evnt)
         {
             _roles.Remove(evnt.RoleId);
+        }
+
+        private void Handle(UserRoleReset evnt)
+        {
+            _roles = evnt.RoleIds;
         }
 
         private void Handle(UserChanged evnt)

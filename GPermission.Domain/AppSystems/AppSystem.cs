@@ -21,6 +21,7 @@ namespace GPermission.Domain.AppSystems
         /// </summary>
         public AppSystem(string id, AppSystemInfo info) : base(id)
         {
+            ApplyEvent(new AppSystemCreated(this, info));
         }
 
 

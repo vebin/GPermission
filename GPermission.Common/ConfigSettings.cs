@@ -35,7 +35,9 @@ namespace GPermission.Common
         /// <summary>用户代码索引表
         /// </summary>
         public static string UserCodeIndexTable { get; set; }
-  
+        /// <summary>用户角色表
+        /// </summary>
+        public static string UserRoleTable { get; set; }
 
         public static int BrokerProducerPort { get; set; }
         public static int BrokerConsumerPort { get; set; }
@@ -59,6 +61,7 @@ namespace GPermission.Common
             RoleCodeIndexTable = "RoleCodeIndex";
             UserTable = "User";
             UserCodeIndexTable = "UserCodeIndex";
+            UserRoleTable = "UserRole";
 
             BrokerProducerPort = 10000;
             BrokerConsumerPort = 10001;

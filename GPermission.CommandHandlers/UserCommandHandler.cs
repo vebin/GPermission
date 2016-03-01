@@ -18,14 +18,19 @@ namespace GPermission.CommandHandlers
     public class UserCommandHandler
         : ICommandHandler<CreateUser>                                           //创建用户
         , ICommandHandler<ChangeUser>                                           //删除用户
+        , ICommandHandler<AddUserRole>                                          //添加用户角色
+        , ICommandHandler<RemoveUserRole>                                       //移除用户角色
+        , ICommandHandler<ResetUserRole>                                        //重置用具角色
     {
         private ILockService _lockService;
         private UserService _userService;
+        private RoleService _roleService;
         private AppSystemService _appSystemService;
-        public UserCommandHandler(ILockService lockService, UserService userService,AppSystemService appSystemService)
+        public UserCommandHandler(ILockService lockService, UserService userService, RoleService roleService, AppSystemService appSystemService)
         {
             _lockService = lockService;
             _userService = userService;
+            _roleService = roleService;
             _appSystemService = appSystemService;
         }
 
@@ -50,6 +55,41 @@ namespace GPermission.CommandHandlers
             {
                 _userService.DeleteUserCodeIndex(command.AggregateRootId);
                 context.Get<User>(command.AggregateRootId).Change(command.UseFlag);
+            });
+        }
+
+        /// <summary>添加用户角色
+        /// </summary>
+        public void Handle(ICommandContext context, AddUserRole command)
+        {
+            _lockService.ExecuteInLock(typeof(User).Name, () =>
+            {
+                foreach (var roleId in command.RoleIds)
+                {
+                    _roleService.IsEnabled(roleId);
+                }
+                context.Get<User>(command.AggregateRootId).AddUserRole(command.RoleIds);
+            });
+        }
+
+        /// <summary>移除用户角色
+        /// </summary>
+        public void Handle(ICommandContext context, RemoveUserRole command)
+        {
+            context.Get<User>(command.AggregateRootId).RemoveUserRole(command.RoleId);
+        }
+
+        /// <summary>重置用户角色
+        /// </summary>
+        public void Handle(ICommandContext context, ResetUserRole command)
+        {
+            _lockService.ExecuteInLock(typeof(User).Name, () =>
+            {
+                foreach (var roleId in command.RoleIds)
+                {
+                    _roleService.IsEnabled(roleId);
+                }
+                context.Get<User>(command.AggregateRootId).ResetUserRole(command.RoleIds);
             });
         }
     }

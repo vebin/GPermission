@@ -1,5 +1,6 @@
 ﻿using ECommon.Components;
 using GPermission.Common;
+using GPermission.Common.Enums;
 using GPermission.Domain.Repositories;
 using GPermission.Domain.Roles;
 using System;
@@ -16,9 +17,11 @@ namespace GPermission.Domain.Services
     public  class RoleService
     {
         private IRoleIndexRepository _roleIndexRepository;
-        public RoleService(IRoleIndexRepository roleIndexRepository)
+        private IRoleRepository _roleRepository;
+        public RoleService(IRoleIndexRepository roleIndexRepository, IRoleRepository roleRepository)
         {
             _roleIndexRepository = roleIndexRepository;
+            _roleRepository = roleRepository;
         }
 
         /// <summary>注册角色代码索引
@@ -43,9 +46,22 @@ namespace GPermission.Domain.Services
             _roleIndexRepository.Delete(new RoleCodeIndex(roleId, code));
         }
 
+        /// <summary>检测角色是否启用
+        /// </summary>
         public void IsEnabled(string roleId)
         {
-
+            var role = _roleRepository.QueryRoles(new { RoleId = roleId });
+            if (role.Count() > 0)
+            {
+                if (role.FirstOrDefault().IsEnabled == (int)IsEnabledEnum.Disabled)
+                {
+                    throw new ValidateException(string.Format("角色Id为:{0}的角色未启用",roleId));
+                }
+            }
+            else
+            {
+                throw new NotExistException(string.Format("角色Id为:{0}的角色不存在",roleId));
+            }
         }
     }
 }

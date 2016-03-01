@@ -74,6 +74,7 @@
     <Compile Include="AppSystems\AppSystemCodeIndex.cs" />
     <Compile Include="Repositories\IAppSystemIndexRepository.cs" />
     <Compile Include="Repositories\IRoleIndexRepository.cs" />
+    <Compile Include="Repositories\IRoleRepository.cs" />
     <Compile Include="Repositories\IUserIndexRepository.cs" />
     <Compile Include="Roles\RoleCodeIndex.cs" />
     <Compile Include="Services\AppSystemService.cs" />
@@ -95,6 +96,7 @@
     <Compile Include="Roles\RoleInfo.cs" />
     <Compile Include="Users\UserRoleAdded.cs" />
     <Compile Include="Users\UserRoleRemoved.cs" />
+    <Compile Include="Users\UserRoleReset.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

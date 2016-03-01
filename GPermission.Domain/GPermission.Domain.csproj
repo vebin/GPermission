@@ -71,6 +71,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Accounts\Account.cs" />
+    <Compile Include="Accounts\AccountChanged.cs" />
+    <Compile Include="Accounts\AccountCreated.cs" />
+    <Compile Include="Accounts\AccountInfo.cs" />
     <Compile Include="AppSystems\AppSystemCodeIndex.cs" />
     <Compile Include="Repositories\IAppSystemIndexRepository.cs" />
     <Compile Include="Repositories\IRoleIndexRepository.cs" />

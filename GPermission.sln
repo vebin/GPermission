@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.40629.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GPermission.MessageBroker", "GPermission.MessageBroker\GPermission.MessageBroker.csproj", "{3A9F5712-73DB-4250-8FCC-FA1448E75523}"
 EndProject
@@ -38,6 +38,10 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Host", "Host", "{83756725-3932-4C43-9804-54E99F2878FF}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{8ADDC801-8CA0-4E32-BEDF-BDEE21018373}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ClientSDK", "ClientSDK", "{A21AEE5B-FB12-42CC-8295-8B3C05B38D6C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GPermission.Client", "Client\GPermission.Client\GPermission.Client.csproj", "{D9363331-E67C-4002-BC2C-2F0DFD8DEFC9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -101,6 +105,10 @@ Global
 		{8EB00FBB-1814-46AA-BF81-DC9C5603CD84}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8EB00FBB-1814-46AA-BF81-DC9C5603CD84}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8EB00FBB-1814-46AA-BF81-DC9C5603CD84}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D9363331-E67C-4002-BC2C-2F0DFD8DEFC9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9363331-E67C-4002-BC2C-2F0DFD8DEFC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9363331-E67C-4002-BC2C-2F0DFD8DEFC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9363331-E67C-4002-BC2C-2F0DFD8DEFC9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -111,5 +119,6 @@ Global
 		{8CCF1D74-90E6-4DBB-A56B-66E23346CB80} = {B03DA1F6-A2EF-4409-BEAD-AB3B141CC879}
 		{3FDE0207-5BBE-4C29-A824-038134F4E698} = {B03DA1F6-A2EF-4409-BEAD-AB3B141CC879}
 		{8EB00FBB-1814-46AA-BF81-DC9C5603CD84} = {83756725-3932-4C43-9804-54E99F2878FF}
+		{D9363331-E67C-4002-BC2C-2F0DFD8DEFC9} = {A21AEE5B-FB12-42CC-8295-8B3C05B38D6C}
 	EndGlobalSection
 EndGlobal

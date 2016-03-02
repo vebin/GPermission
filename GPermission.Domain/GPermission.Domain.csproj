@@ -79,6 +79,14 @@
     <Compile Include="Accounts\AppSystemRemoved.cs" />
     <Compile Include="Accounts\AppSystemReset.cs" />
     <Compile Include="AppSystems\AppSystemCodeIndex.cs" />
+    <Compile Include="Modules\Module.cs" />
+    <Compile Include="Modules\ModuleChanged.cs" />
+    <Compile Include="Modules\ModuleCreated.cs" />
+    <Compile Include="Modules\ModuleEditableInfo.cs" />
+    <Compile Include="Modules\ModuleInfo.cs" />
+    <Compile Include="Modules\ModuleUnVisibled.cs" />
+    <Compile Include="Modules\ModuleUpdated.cs" />
+    <Compile Include="Modules\ModuleVisibled.cs" />
     <Compile Include="Repositories\IAppSystemIndexRepository.cs" />
     <Compile Include="Repositories\IRoleIndexRepository.cs" />
     <Compile Include="Repositories\IRoleRepository.cs" />

@@ -39,14 +39,22 @@ namespace GPermission.Common
         /// </summary>
         public static string UserRoleTable { get; set; }
 
+        /// <summary>模块表
+        /// </summary>
+        public static string ModuleTable { get; set; }
+        /// <summary>权限表
+        /// </summary>
+        public static string PermissionTable { get; set; }
+        /// <summary>模块权限表
+        /// </summary>
+        public static string ModulePermissionTable { get; set; }
+
         /// <summary>账号表
         /// </summary>
         public static string AccountTable { get; set; }
         /// <summary>账号,应用系统关联表
         /// </summary>
         public static string AccountAppSystemTable { get; set; }
-
-
 
         public static int BrokerProducerPort { get; set; }
         public static int BrokerConsumerPort { get; set; }
@@ -72,6 +80,9 @@ namespace GPermission.Common
             UserCodeIndexTable = "UserCodeIndex";
             UserRoleTable = "UserRole";
 
+            ModuleTable = "Module";
+            PermissionTable = "Permission";
+            ModulePermissionTable = "ModulePermission";
             AccountTable = "Account";
             AccountAppSystemTable = "AccountAppSystem";
 

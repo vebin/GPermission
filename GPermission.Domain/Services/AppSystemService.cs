@@ -47,7 +47,7 @@ namespace GPermission.Domain.Services
         /// </summary>
         public void Exist(string appSystemId)
         {
-            var data = _appSystemIndexRepository.GetById(appSystemId);
+            var data = _appSystemIndexRepository.FindById(appSystemId);
             if (data == null)
             {
                 throw new NotExistException("应用系统不存在");

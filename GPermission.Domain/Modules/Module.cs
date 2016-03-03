@@ -24,11 +24,11 @@ namespace GPermission.Domain.Modules
 
         /// <summary>创建模块
         /// </summary>
-        public Module(string id, ModuleInfo info) : base(id)
+        public Module(string id, ModuleInfo info,string verifyType,int isVisible) : base(id)
         {
             Assert.IsNotNullOrEmpty("模块名称", info.Name);
 
-            ApplyEvent(new ModuleCreated(this, info));
+            ApplyEvent(new ModuleCreated(this, info,verifyType,isVisible));
         }
 
         /// <summary>更新模块
@@ -155,7 +155,7 @@ namespace GPermission.Domain.Modules
         private void Handle(ModuleUpdated evnt)
         {
             var editableInfo = evnt.Info;
-            _info = new ModuleInfo(_info.AppSystemId, _info.Code, editableInfo.ModuleType, editableInfo.ParentModule, editableInfo.LinkUrl, editableInfo.AssemblyName, editableInfo.FullName);
+            _info = new ModuleInfo(_info.AppSystemId, _info.Code, editableInfo.Name, editableInfo.ModuleType, editableInfo.ParentModule, editableInfo.LinkUrl, editableInfo.AssemblyName, editableInfo.FullName,editableInfo.Sort,editableInfo.ReMark);
             _isVisible = evnt.IsVisiable;
             _verifyType = evnt.VerifyType;
         }

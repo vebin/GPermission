@@ -104,11 +104,13 @@
     <Compile Include="Permissions\PermissionUpdated.cs" />
     <Compile Include="Permissions\PermissionVisibled.cs" />
     <Compile Include="Repositories\IAppSystemIndexRepository.cs" />
+    <Compile Include="Repositories\IModuleRepository.cs" />
     <Compile Include="Repositories\IRoleIndexRepository.cs" />
     <Compile Include="Repositories\IRoleRepository.cs" />
     <Compile Include="Repositories\IUserIndexRepository.cs" />
     <Compile Include="Roles\RoleCodeIndex.cs" />
     <Compile Include="Services\AppSystemService.cs" />
+    <Compile Include="Services\ModuleService.cs" />
     <Compile Include="Services\RoleService.cs" />
     <Compile Include="Services\UserService.cs" />
     <Compile Include="Users\User.cs" />

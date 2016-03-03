@@ -76,14 +76,24 @@
     <Compile Include="Accounts\CreateAccount.cs" />
     <Compile Include="Accounts\RemoveAppSystem.cs" />
     <Compile Include="Accounts\ResetAppSystem.cs" />
+    <Compile Include="Modules\ChangeModule.cs" />
+    <Compile Include="Modules\CreateModule.cs" />
+    <Compile Include="Modules\LockedModule.cs" />
+    <Compile Include="Modules\SetModuleInVisible.cs" />
+    <Compile Include="Modules\SetModuleLeaf.cs" />
+    <Compile Include="Modules\SetModuleVisible.cs" />
+    <Compile Include="Modules\UnLockedModule.cs" />
+    <Compile Include="Modules\UpdateModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Roles\ChangeRole.cs" />
     <Compile Include="Roles\CreateRole.cs" />
-    <Compile Include="Users\AddUserRole.cs" />
+    <Compile Include="Users\AttachUserRole.cs" />
     <Compile Include="Users\ChangeUser.cs" />
     <Compile Include="Users\CreateUser.cs" />
-    <Compile Include="Users\RemoveUserRole.cs" />
+    <Compile Include="Users\DetachUserRole.cs" />
+    <Compile Include="Users\LockedUser.cs" />
     <Compile Include="Users\ResetUserRole.cs" />
+    <Compile Include="Users\UnLockedUser.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

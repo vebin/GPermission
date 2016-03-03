@@ -64,7 +64,7 @@ namespace GPermission.Repositories.Dapper
 
         /// <summary>根据Id查询应用系统
         /// </summary>
-        public dynamic GetById(string appSystemId)
+        public dynamic FindById(string appSystemId)
         {
             using (var connection = GetConnection())
             {

@@ -25,6 +25,6 @@ namespace GPermission.Domain.Repositories
 
         /// <summary>根据Id查询应用系统
         /// </summary>
-        dynamic GetById(string appSystemId);
+        dynamic FindById(string appSystemId);
     }
 }

@@ -18,9 +18,12 @@ namespace GPermission.CommandHandlers
     public class UserCommandHandler
         : ICommandHandler<CreateUser>                                           //创建用户
         , ICommandHandler<ChangeUser>                                           //删除用户
-        , ICommandHandler<AddUserRole>                                          //添加用户角色
-        , ICommandHandler<RemoveUserRole>                                       //移除用户角色
+        , ICommandHandler<AttachUserRole>                                       //添加用户角色
+        , ICommandHandler<DetachUserRole>                                       //移除用户角色
         , ICommandHandler<ResetUserRole>                                        //重置用具角色
+        , ICommandHandler<LockedUser>                                           //锁定用户
+        , ICommandHandler<UnLockedUser>                                         //解锁用户
+        
     {
         private ILockService _lockService;
         private UserService _userService;
@@ -60,7 +63,7 @@ namespace GPermission.CommandHandlers
 
         /// <summary>添加用户角色
         /// </summary>
-        public void Handle(ICommandContext context, AddUserRole command)
+        public void Handle(ICommandContext context, AttachUserRole command)
         {
             _lockService.ExecuteInLock(typeof(User).Name, () =>
             {
@@ -74,7 +77,7 @@ namespace GPermission.CommandHandlers
 
         /// <summary>移除用户角色
         /// </summary>
-        public void Handle(ICommandContext context, RemoveUserRole command)
+        public void Handle(ICommandContext context, DetachUserRole command)
         {
             context.Get<User>(command.AggregateRootId).DetachUserRole(command.RoleId);
         }
@@ -91,6 +94,20 @@ namespace GPermission.CommandHandlers
                 }
                 context.Get<User>(command.AggregateRootId).ResetUserRole(command.RoleIds);
             });
+        }
+
+        /// <summary>锁定用户
+        /// </summary>
+        public void Handle(ICommandContext context, LockedUser command)
+        {
+            context.Get<User>(command.AggregateRootId).Locked();
+        }
+
+        /// <summary>解锁用户
+        /// </summary>
+        public void Handle(ICommandContext context, UnLockedUser command)
+        {
+            context.Get<User>(command.AggregateRootId).Unlock();
         }
     }
 }

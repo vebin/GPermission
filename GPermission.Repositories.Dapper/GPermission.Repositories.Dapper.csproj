@@ -73,6 +73,7 @@
   <ItemGroup>
     <Compile Include="AppSystemRepository.cs" />
     <Compile Include="BaseRepository.cs" />
+    <Compile Include="ModuleRepository.cs" />
     <Compile Include="RoleIndexRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RoleRepository.cs" />

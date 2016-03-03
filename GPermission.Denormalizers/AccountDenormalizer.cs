@@ -17,8 +17,8 @@ namespace GPermission.Denormalizers
     public class AccountDenormalizer : AbstractDenormalizer
         , IMessageHandler<AccountCreated>                                            //创建账号
         , IMessageHandler<AccountChanged>                                            //删除账号
-        , IMessageHandler<AppSystemAdded>                                            //添加账号下应用系统
-        , IMessageHandler<AppSystemRemoved>                                          //移除账号下应用系统
+        , IMessageHandler<AppSystemAttached>                                            //添加账号下应用系统
+        , IMessageHandler<AppSystemDetached>                                          //移除账号下应用系统
         , IMessageHandler<AppSystemReset>                                            //重置账号下应用系统
     {
 
@@ -66,7 +66,7 @@ namespace GPermission.Denormalizers
 
         /// <summary>添加应用系统
         /// </summary>
-        public Task<AsyncTaskResult> HandleAsync(AppSystemAdded evnt)
+        public Task<AsyncTaskResult> HandleAsync(AppSystemAttached evnt)
         {
             return TryTransactionAsync(async (connection, transaction) =>
             {
@@ -98,7 +98,7 @@ namespace GPermission.Denormalizers
 
         /// <summary>移除账号下应用系统
         /// </summary>
-        public Task<AsyncTaskResult> HandleAsync(AppSystemRemoved evnt)
+        public Task<AsyncTaskResult> HandleAsync(AppSystemDetached evnt)
         {
             return TryTransactionAsync(async (connection, transaction) =>
             {

@@ -54,7 +54,7 @@ namespace GPermission.CommandHandlers
                 {
                     _appSystemService.Exist(appSystemId);
                 }
-                context.Get<Account>(command.AggregateRootId).AddAppSystem(command.AppSystemIds);
+                context.Get<Account>(command.AggregateRootId).AttachAppSystem(command.AppSystemIds);
             });
         }
 
@@ -62,7 +62,7 @@ namespace GPermission.CommandHandlers
         /// </summary>
         public void Handle(ICommandContext context, RemoveAppSystem command)
         {
-            context.Get<Account>(command.AggregateRootId).RemoveAppSystem(command.AppSystemId);
+            context.Get<Account>(command.AggregateRootId).DetachAppSystem(command.AppSystemId);
         }
 
         /// <summary>重置账号下的系统

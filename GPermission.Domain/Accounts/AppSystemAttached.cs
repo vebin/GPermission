@@ -10,15 +10,15 @@ namespace GPermission.Domain.Accounts
     /// <summary>添加账号关联系统事件
     /// </summary>
     [Serializable]
-    public class AppSystemAdded : DomainEvent<string>
+    public class AppSystemAttached : DomainEvent<string>
     {
         public List<string> AppSystemIds { get; private set; }
-        public AppSystemAdded()
+        public AppSystemAttached()
         {
 
         }
 
-        public AppSystemAdded(Account account, List<string> appSystemIds) : base()
+        public AppSystemAttached(Account account, List<string> appSystemIds) : base()
         {
             AppSystemIds = appSystemIds;
         }

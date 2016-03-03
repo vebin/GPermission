@@ -10,14 +10,14 @@ namespace GPermission.Domain.Users
     /// <summary>删除用户角色
     /// </summary>
     [Serializable]
-    public class UserRoleRemoved : DomainEvent<string>
+    public class UserRoleDetached : DomainEvent<string>
     {
         public string RoleId { get; private set; }
 
-        public UserRoleRemoved()
+        public UserRoleDetached()
         {
         }
-        public UserRoleRemoved(User user,string roleId) : base()
+        public UserRoleDetached(User user,string roleId) : base()
         {
             RoleId = roleId;
         }

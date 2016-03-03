@@ -16,9 +16,11 @@ namespace GPermission.Denormalizers
     /// </summary>
     public class UserDenormalizer : AbstractDenormalizer
         , IMessageHandler<UserCreated>                                    //创建用户
-        , IMessageHandler<UserRoleAdded>                                  //添加用户角色
-        , IMessageHandler<UserRoleRemoved>                                //删除用户角色   
-        , IMessageHandler<UserRoleReset>                                  //重置用户角色                 
+        , IMessageHandler<UserRoleAttached>                                  //添加用户角色
+        , IMessageHandler<UserRoleDetached>                                //删除用户角色   
+        , IMessageHandler<UserRoleReset>                                  //重置用户角色
+        , IMessageHandler<UserLocked>                                     //锁定用户
+        , IMessageHandler<UserUnLock>                                     //解锁用户             
         , IMessageHandler<UserChanged>                                    //删除用户     
     {
 
@@ -36,6 +38,7 @@ namespace GPermission.Denormalizers
                     Code = info.Code,
                     UserName = info.UserName,
                     UseFlag = (int)UseFlag.Useable,
+                    Status=UserStatus.Normal.ToString(),
                     ReMark = info.ReMark,
                     Version = evnt.Version,
                     EventSequence = evnt.Sequence
@@ -45,7 +48,7 @@ namespace GPermission.Denormalizers
 
         /// <summary>添加用户角色
         /// </summary>
-        public Task<AsyncTaskResult> HandleAsync(UserRoleAdded evnt)
+        public Task<AsyncTaskResult> HandleAsync(UserRoleAttached evnt)
         {
             return TryTransactionAsync(async (connection, transaction) =>
             {
@@ -77,7 +80,7 @@ namespace GPermission.Denormalizers
 
         /// <summary>移除用户角色
         /// </summary>
-        public Task<AsyncTaskResult> HandleAsync(UserRoleRemoved evnt)
+        public Task<AsyncTaskResult> HandleAsync(UserRoleDetached evnt)
         {
             return TryTransactionAsync(async (connection, transaction) =>
             {
@@ -136,6 +139,44 @@ namespace GPermission.Denormalizers
                     }
                     await Task.WhenAll(tasks);
                 }
+            });
+        }
+
+        /// <summary>锁定用户
+        /// </summary>
+        public Task<AsyncTaskResult> HandleAsync(UserLocked evnt)
+        {
+            return TryUpdateRecordAsync(connection =>
+            {
+                return connection.UpdateAsync(new
+                {
+                    Status=UserStatus.Locked.ToString(),
+                    Version = evnt.Version,
+                    EventSequence = evnt.Sequence
+                }, new
+                {
+                    UserId = evnt.AggregateRootId,
+                    Version = evnt.Version - 1
+                }, ConfigSettings.UserTable);
+            });
+        }
+
+        /// <summary>解锁用户
+        /// </summary>
+        public Task<AsyncTaskResult> HandleAsync(UserUnLock evnt)
+        {
+            return TryUpdateRecordAsync(connection =>
+            {
+                return connection.UpdateAsync(new
+                {
+                    Status = UserStatus.Normal.ToString(),
+                    Version = evnt.Version,
+                    EventSequence = evnt.Sequence
+                }, new
+                {
+                    UserId = evnt.AggregateRootId,
+                    Version = evnt.Version - 1
+                }, ConfigSettings.UserTable);
             });
         }
 

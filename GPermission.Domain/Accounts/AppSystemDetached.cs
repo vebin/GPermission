@@ -10,16 +10,16 @@ namespace GPermission.Domain.Accounts
     /// <summary>移除应用系统事件
     /// </summary>
     [Serializable]
-    public class AppSystemRemoved : DomainEvent<string>
+    public class AppSystemDetached : DomainEvent<string>
     {
         public string AppSystemId { get; private set; }
 
-        public AppSystemRemoved()
+        public AppSystemDetached()
         {
 
         }
 
-        public AppSystemRemoved(Account account, string appSystemId) : base()
+        public AppSystemDetached(Account account, string appSystemId) : base()
         {
             AppSystemId = appSystemId;
         }

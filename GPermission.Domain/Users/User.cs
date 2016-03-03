@@ -30,8 +30,12 @@ namespace GPermission.Domain.Users
 
         /// <summary>添加用户角色
         /// </summary>
-        public void AddUserRole(List<string> roleIds)
+        public void AttachUserRole(List<string> roleIds)
         {
+            if (_status == UserStatus.Locked.ToString())
+            {
+                throw new ValidateException("该账号已经被锁定,请先解锁账号");
+            }
             foreach (var roleId in roleIds)
             {
                 if (_roles.Contains(roleId))
@@ -39,19 +43,19 @@ namespace GPermission.Domain.Users
                     throw new RepeatException("该角色已经存在");
                 }
             }
-            ApplyEvent(new UserRoleAdded(this, roleIds));
+            ApplyEvent(new UserRoleAttached(this, roleIds));
         }
 
         /// <summary>删除用户角色
         /// </summary>
-        public void RemoveUserRole(string roleId)
+        public void DetachUserRole(string roleId)
         {
             var id = _roles.Where(x => x == roleId).FirstOrDefault();
             if (string.IsNullOrEmpty(id))
             {
                 throw new NotExistException("该用户的权限不存在");
             }
-            ApplyEvent(new UserRoleRemoved(this, roleId));
+            ApplyEvent(new UserRoleDetached(this, roleId));
         }
 
         /// <summary>重置用户角色
@@ -59,6 +63,28 @@ namespace GPermission.Domain.Users
         public void ResetUserRole(List<string> roleIds)
         {
             ApplyEvent(new UserRoleReset(this, roleIds));
+        }
+
+        /// <summary>锁定用户
+        /// </summary>
+        public void Locked()
+        {
+            if (_status == UserStatus.Locked.ToString())
+            {
+                throw new ValidateException("该用户已经处于锁定状态");
+            }
+            ApplyEvent(new UserLocked(this));
+        }
+
+        /// <summary>解锁用户
+        /// </summary>
+        public void Unlock()
+        {
+            if (_status == UserStatus.Normal.ToString())
+            {
+                throw new ValidateException("该用户已经解锁");
+            }
+            ApplyEvent(new UserUnLock(this));
         }
 
         /// <summary>删除用户
@@ -79,7 +105,7 @@ namespace GPermission.Domain.Users
             _useFlag = (int)UseFlag.Useable;
         }
 
-        private void Handle(UserRoleAdded evnt)
+        private void Handle(UserRoleAttached evnt)
         {
             foreach (var roleId in evnt.RoleIds)
             {
@@ -87,7 +113,7 @@ namespace GPermission.Domain.Users
             }
         }
 
-        private void Handle(UserRoleRemoved evnt)
+        private void Handle(UserRoleDetached evnt)
         {
             _roles.Remove(evnt.RoleId);
         }

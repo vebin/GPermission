@@ -35,7 +35,7 @@ namespace GPermission.Domain.Accounts
         }
         /// <summary>添加账号系统
         /// </summary>
-        public void AddAppSystem(List<string> appSystemIds)
+        public void AttachAppSystem(List<string> appSystemIds)
         {
             foreach (var appSystemId in appSystemIds)
             {
@@ -44,18 +44,18 @@ namespace GPermission.Domain.Accounts
                     throw new RepeatException("系统已经存在");
                 }
             }
-            ApplyEvent(new AppSystemAdded(this, appSystemIds));
+            ApplyEvent(new AppSystemAttached(this, appSystemIds));
         }
 
         /// <summary>删除账号下的系统
         /// </summary>
-        public void RemoveAppSystem(string appSystemId)
+        public void DetachAppSystem(string appSystemId)
         {
             if (!_appSystems.Contains(appSystemId))
             {
                 throw new NotExistException("系统不存在");
             }
-            ApplyEvent(new AppSystemRemoved(this, appSystemId));
+            ApplyEvent(new AppSystemDetached(this, appSystemId));
         }
 
         /// <summary>重新设置账号下的系统
@@ -71,6 +71,7 @@ namespace GPermission.Domain.Accounts
         {
             _id = evnt.AggregateRootId;
             _info = evnt.Info;
+            _appSystems = new List<string>();
             _status = AccountStatus.Normal.ToString();
             _useFlag = (int)UseFlag.Useable;
         }

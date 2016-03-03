@@ -10,14 +10,14 @@ namespace GPermission.Domain.Modules
     /// <summary>模块不可见事件
     /// </summary>
     [Serializable]
-    public class ModuleUnVisibled : DomainEvent<string>
+    public class ModuleInVisibled : DomainEvent<string>
     {
-        public ModuleUnVisibled()
+        public ModuleInVisibled()
         {
 
         }
 
-        public ModuleUnVisibled(Module module) : base()
+        public ModuleInVisibled(Module module) : base()
         {
 
         }

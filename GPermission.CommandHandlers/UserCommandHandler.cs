@@ -68,7 +68,7 @@ namespace GPermission.CommandHandlers
                 {
                     _roleService.IsEnabled(roleId);
                 }
-                context.Get<User>(command.AggregateRootId).AddUserRole(command.RoleIds);
+                context.Get<User>(command.AggregateRootId).AttachUserRole(command.RoleIds);
             });
         }
 
@@ -76,7 +76,7 @@ namespace GPermission.CommandHandlers
         /// </summary>
         public void Handle(ICommandContext context, RemoveUserRole command)
         {
-            context.Get<User>(command.AggregateRootId).RemoveUserRole(command.RoleId);
+            context.Get<User>(command.AggregateRootId).DetachUserRole(command.RoleId);
         }
 
         /// <summary>重置用户角色

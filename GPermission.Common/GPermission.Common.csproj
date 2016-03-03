@@ -43,9 +43,13 @@
     <Compile Include="Assert.cs" />
     <Compile Include="Enums\AccountStatus.cs" />
     <Compile Include="Enums\AccountType.cs" />
+    <Compile Include="Enums\AppSystemStatus.cs" />
     <Compile Include="Enums\Common\BoolEnum.cs" />
     <Compile Include="Enums\Common\IsEnabledEnum.cs" />
     <Compile Include="Enums\Common\UseFlag.cs" />
+    <Compile Include="Enums\ModuleStatus.cs" />
+    <Compile Include="Enums\PermissionStatus.cs" />
+    <Compile Include="Enums\UserStatus.cs" />
     <Compile Include="Exceptions\AbstractException.cs" />
     <Compile Include="Exceptions\InLockException.cs" />
     <Compile Include="Exceptions\NotExistException.cs" />

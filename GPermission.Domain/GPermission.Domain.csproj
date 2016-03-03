@@ -75,8 +75,8 @@
     <Compile Include="Accounts\AccountChanged.cs" />
     <Compile Include="Accounts\AccountCreated.cs" />
     <Compile Include="Accounts\AccountInfo.cs" />
-    <Compile Include="Accounts\AppSystemAdded.cs" />
-    <Compile Include="Accounts\AppSystemRemoved.cs" />
+    <Compile Include="Accounts\AppSystemAttached.cs" />
+    <Compile Include="Accounts\AppSystemDetached.cs" />
     <Compile Include="Accounts\AppSystemReset.cs" />
     <Compile Include="AppSystems\AppSystemCodeIndex.cs" />
     <Compile Include="Modules\Module.cs" />
@@ -84,9 +84,25 @@
     <Compile Include="Modules\ModuleCreated.cs" />
     <Compile Include="Modules\ModuleEditableInfo.cs" />
     <Compile Include="Modules\ModuleInfo.cs" />
-    <Compile Include="Modules\ModuleUnVisibled.cs" />
+    <Compile Include="Modules\ModuleInVisibled.cs" />
+    <Compile Include="Modules\ModuleLeafSetted.cs" />
+    <Compile Include="Modules\ModuleLocked.cs" />
+    <Compile Include="Modules\ModulePermissionAttached.cs" />
+    <Compile Include="Modules\ModulePermissionDetached.cs" />
+    <Compile Include="Modules\ModulePermissionUpdated.cs" />
+    <Compile Include="Modules\ModuleUnLock.cs" />
     <Compile Include="Modules\ModuleUpdated.cs" />
     <Compile Include="Modules\ModuleVisibled.cs" />
+    <Compile Include="Permissions\Permission.cs" />
+    <Compile Include="Permissions\PermissionChanged.cs" />
+    <Compile Include="Permissions\PermissionCreated.cs" />
+    <Compile Include="Permissions\PermissionEditableInfo.cs" />
+    <Compile Include="Permissions\PermissionInfo.cs" />
+    <Compile Include="Permissions\PermissionInVisibled.cs" />
+    <Compile Include="Permissions\PermissionLocked.cs" />
+    <Compile Include="Permissions\PermissionUnLock.cs" />
+    <Compile Include="Permissions\PermissionUpdated.cs" />
+    <Compile Include="Permissions\PermissionVisibled.cs" />
     <Compile Include="Repositories\IAppSystemIndexRepository.cs" />
     <Compile Include="Repositories\IRoleIndexRepository.cs" />
     <Compile Include="Repositories\IRoleRepository.cs" />
@@ -109,9 +125,11 @@
     <Compile Include="Roles\RoleChanged.cs" />
     <Compile Include="Roles\RoleCreated.cs" />
     <Compile Include="Roles\RoleInfo.cs" />
-    <Compile Include="Users\UserRoleAdded.cs" />
-    <Compile Include="Users\UserRoleRemoved.cs" />
+    <Compile Include="Users\UserLocked.cs" />
+    <Compile Include="Users\UserRoleAttached.cs" />
+    <Compile Include="Users\UserRoleDetached.cs" />
     <Compile Include="Users\UserRoleReset.cs" />
+    <Compile Include="Users\UserUnLock.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

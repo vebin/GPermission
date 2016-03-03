@@ -18,9 +18,12 @@ namespace GPermission.Domain.Modules
         private string _verifyType;
         private int _isLeaf;
         private int _isVisible;
+        private IList<string> _permissions;
         private string _status;
         private int _useFlag;
 
+        /// <summary>创建模块
+        /// </summary>
         public Module(string id, ModuleInfo info) : base(id)
         {
             Assert.IsNotNullOrEmpty("模块名称", info.Name);
@@ -28,13 +31,21 @@ namespace GPermission.Domain.Modules
             ApplyEvent(new ModuleCreated(this, info));
         }
 
-        public void Update(ModuleEditableInfo info,string verifyType,int isVisiable)
+        /// <summary>更新模块
+        /// </summary>
+        public void Update(ModuleEditableInfo info, string verifyType, int isVisiable)
         {
-            Assert.IsNotInEnum("是否可见", typeof(BoolEnum),isVisiable);
-            ApplyEvent(new ModuleUpdated(this, info,verifyType,isVisiable));
+            if (_status == ModuleStatus.Locked.ToString())
+            {
+                throw new ValidateException("该模块处于锁定状态无法更新,请先解锁");
+            }
+            Assert.IsNotInEnum("是否可见", typeof(BoolEnum), isVisiable);
+            ApplyEvent(new ModuleUpdated(this, info, verifyType, isVisiable));
         }
 
-        public void SetVisiable()
+        /// <summary>设置模块为可见
+        /// </summary>
+        public void SetVisible()
         {
             if (_isVisible == (int)BoolEnum.True)
             {
@@ -43,22 +54,49 @@ namespace GPermission.Domain.Modules
             ApplyEvent(new ModuleVisibled(this));
         }
 
-        public void SetUnVisiable()
+        /// <summary>设置模块为隐藏
+        /// </summary>
+        public void SetInVisible()
         {
-            if(_isVisible==(int)BoolEnum.False)
+            if (_isVisible == (int)BoolEnum.False)
             {
                 throw new ValidateException("该模块已经处于隐藏状态");
             }
-            ApplyEvent(new ModuleUnVisibled(this));
+            ApplyEvent(new ModuleInVisibled(this));
         }
 
+        /// <summary>锁定模块
+        /// </summary>
+        public void Locked()
+        {
+            if (_status == ModuleStatus.Locked.ToString())
+            {
+                throw new ValidateException("该模块已经处于锁定状态");
+            }
+            ApplyEvent(new ModuleLocked(this));
+        }
+
+        /// <summary>模块解锁
+        /// </summary>
+        public void UnLock()
+        {
+            if (_status == ModuleStatus.Normal.ToString())
+            {
+                throw new ValidateException("该模块已经处于解锁");
+            }
+            ApplyEvent(new ModuleUnLock(this));
+        }
+
+        /// <summary>设置模块是否为叶子节点
+        /// </summary>
         public void SetLeaf(int isLeaf)
         {
             Assert.IsNotInEnum("模块节点状态", typeof(BoolEnum), isLeaf);
-
+            ApplyEvent(new ModuleLeafSetted(this, isLeaf));
         }
 
-
+        /// <summary>删除模块
+        /// </summary>
         public void Change(int useFlag)
         {
             if (_isLeaf == (int)BoolEnum.False)
@@ -69,7 +107,37 @@ namespace GPermission.Domain.Modules
             ApplyEvent(new ModuleChanged(this, useFlag));
         }
 
+        /// <summary>添加模块权限
+        /// </summary>
+        public void AttachPermission(List<string> permissionIds)
+        {
+            foreach (var permissionId in permissionIds)
+            {
+                if (_permissions.Contains(permissionId))
+                {
+                    throw new RepeatException("该模块已经添加该条权限");
+                }
+            }
+            ApplyEvent(new ModulePermissionAttached(this, permissionIds));
+        }
 
+        /// <summary>更新模块权限
+        /// </summary>
+        public void UpdateAttachPermission(List<string> permissionIds)
+        {
+            ApplyEvent(new ModulePermissionUpdated(this, permissionIds));
+        }
+
+        /// <summary>移除模块权限
+        /// </summary>
+        public void DetachPermission(string permissionId)
+        {
+            if (!_permissions.Contains(permissionId))
+            {
+                throw new NotExistException("该模块下不存在此权限");
+            }
+            ApplyEvent(new ModulePermissionDetached(this, permissionId));
+        }
 
 
         #region Event Handle Methods
@@ -77,7 +145,10 @@ namespace GPermission.Domain.Modules
         {
             _id = evnt.AggregateRootId;
             _info = evnt.Info;
-            _status = "1";
+            _isLeaf = (int)BoolEnum.True;
+            _isVisible = (int)BoolEnum.True;
+            _permissions = new List<string>();
+            _status = ModuleStatus.Normal.ToString();
             _useFlag = (int)UseFlag.Useable;
         }
 
@@ -89,10 +160,52 @@ namespace GPermission.Domain.Modules
             _verifyType = evnt.VerifyType;
         }
 
-        //删除
+        private void Handle(ModuleVisibled evnt)
+        {
+            _isVisible = (int)BoolEnum.True;
+        }
+
+        private void Handle(ModuleInVisibled evnt)
+        {
+            _isVisible = (int)BoolEnum.False;
+        }
+
+        private void Handle(ModuleLocked evnt)
+        {
+            _status = ModuleStatus.Locked.ToString();
+        }
+
+        private void Handle(ModuleUnLock evnt)
+        {
+            _status = ModuleStatus.Normal.ToString();
+        }
+
+        private void Handle(ModuleLeafSetted evnt)
+        {
+            _isLeaf = evnt.IsLeaf;
+        }
+
         private void Handle(ModuleChanged evnt)
         {
             _useFlag = evnt.UseFlag;
+        }
+
+        private void Handle(ModulePermissionAttached evnt)
+        {
+            foreach(var permissionId in evnt.PermissionIds)
+            {
+                _permissions.Add(permissionId);
+            }
+        }
+
+        private void Handle(ModulePermissionDetached evnt)
+        {
+            _permissions.Remove(evnt.PermissionId);
+        }
+
+        private void Handle(ModulePermissionUpdated evnt)
+        {
+            _permissions = evnt.PermissionIds;
         }
 
         #endregion

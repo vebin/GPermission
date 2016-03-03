@@ -10,16 +10,16 @@ namespace GPermission.Domain.Users
     /// <summary>用户角色添加
     /// </summary>
     [Serializable]
-    public class UserRoleAdded : DomainEvent<string>
+    public class UserRoleAttached : DomainEvent<string>
     {
         public List<string> RoleIds { get; private set; }
 
-        public UserRoleAdded()
+        public UserRoleAttached()
         {
 
         }
 
-        public UserRoleAdded(User user,List<string> roleIds) : base()
+        public UserRoleAttached(User user,List<string> roleIds) : base()
         {
             RoleIds = roleIds;
         }

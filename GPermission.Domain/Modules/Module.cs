@@ -28,9 +28,10 @@ namespace GPermission.Domain.Modules
             ApplyEvent(new ModuleCreated(this, info));
         }
 
-        public void Update(ModuleEditableInfo info)
+        public void Update(ModuleEditableInfo info,string verifyType,int isVisiable)
         {
-
+            Assert.IsNotInEnum("是否可见", typeof(BoolEnum),isVisiable);
+            ApplyEvent(new ModuleUpdated(this, info,verifyType,isVisiable));
         }
 
         public void SetVisiable()
@@ -78,6 +79,14 @@ namespace GPermission.Domain.Modules
             _info = evnt.Info;
             _status = "1";
             _useFlag = (int)UseFlag.Useable;
+        }
+
+        private void Handle(ModuleUpdated evnt)
+        {
+            var editableInfo = evnt.Info;
+            _info = new ModuleInfo(_info.AppSystemId, _info.Code, editableInfo.ModuleType, editableInfo.ParentModule, editableInfo.LinkUrl, editableInfo.AssemblyName, editableInfo.FullName);
+            _isVisible = evnt.IsVisiable;
+            _verifyType = evnt.VerifyType;
         }
 
         //删除

@@ -15,17 +15,17 @@ namespace GPermission.Denormalizers
     /// <summary>模块持久化
     /// </summary>
     public class ModuleDenormalizer : AbstractDenormalizer
-        , IMessageHandler<ModuleCreated>                                                //创建模块
-        , IMessageHandler<ModuleUpdated>                                                //更新模块
-        , IMessageHandler<ModuleChanged>                                                //删除模块
-        , IMessageHandler<ModuleVisibled>                                               //设置模块可见
-        , IMessageHandler<ModuleInVisibled>                                             //设置模块不可见
-        , IMessageHandler<ModuleLeafSetted>                                             //设置模块是否叶子节点
-        , IMessageHandler<ModuleLocked>                                                 //锁定模块
-        , IMessageHandler<ModuleUnLock>                                                 //解锁模块
-        , IMessageHandler<ModulePermissionAttached>                                     //添加模块权限
-        , IMessageHandler<ModulePermissionUpdated>                                      //更新模块权限
-        , IMessageHandler<ModulePermissionDetached>                                     //删除模块权限
+        , IMessageHandler<ModuleCreated>                                               //创建模块
+        , IMessageHandler<ModuleUpdated>                                               //更新模块
+        , IMessageHandler<ModuleChanged>                                               //删除模块
+        , IMessageHandler<ModuleVisibled>                                              //设置模块可见
+        , IMessageHandler<ModuleInVisibled>                                            //设置模块不可见
+        , IMessageHandler<ModuleLeafSetted>                                            //设置模块是否叶子节点
+        , IMessageHandler<ModuleLocked>                                                //锁定模块
+        , IMessageHandler<ModuleUnLock>                                                //解锁模块
+        , IMessageHandler<ModulePermissionAttached>                                    //添加模块权限
+        , IMessageHandler<ModulePermissionUpdated>                                     //更新模块权限
+        , IMessageHandler<ModulePermissionDetached>                                    //删除模块权限
     {
 
         /// <summary>创建模块
@@ -220,12 +220,13 @@ namespace GPermission.Denormalizers
                 if (effectedRows == 1)
                 {
                     var tasks = new List<Task>();
-                    foreach (var permissionId in evnt.PermissionIds)
+                    foreach (var permission in evnt.Permissions)
                     {
                         tasks.Add(connection.InsertAsync(new
                         {
+                            ModulePermissionId=permission.Key,
                             ModuleId = evnt.AggregateRootId,
-                            PermissionId = permissionId
+                            PermissionId = permission.Value
                         }, ConfigSettings.ModulePermissionTable, transaction));
                     }
                     await Task.WhenAll(tasks);
@@ -259,12 +260,13 @@ namespace GPermission.Denormalizers
                     }, ConfigSettings.ModulePermissionTable, transaction));
 
                     //添加新权限
-                    foreach (var permissionId in evnt.PermissionIds)
+                    foreach (var permission in evnt.Permissions)
                     {
                         tasks.Add(connection.InsertAsync(new
                         {
+                            ModulePermissionId= permission.Key,
                             ModuleId = evnt.AggregateRootId,
-                            PermissionId = permissionId
+                            PermissionId = permission.Value
                         }, ConfigSettings.ModulePermissionTable, transaction));
                     }
                     await Task.WhenAll(tasks);
@@ -292,7 +294,7 @@ namespace GPermission.Denormalizers
                 {
                     await connection.DeleteAsync(new
                     {
-                        ModuleId=evnt.AggregateRootId
+                        ModulePermissionId=evnt.ModulePermissionId
                     }, ConfigSettings.ModulePermissionTable, transaction);
                 }
             });

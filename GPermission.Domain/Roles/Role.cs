@@ -15,6 +15,7 @@ namespace GPermission.Domain.Roles
     public class Role : AggregateRoot<string>
     {
         private RoleInfo _info;
+       
         private int _isEnabled;
         private int _useFlag;
 

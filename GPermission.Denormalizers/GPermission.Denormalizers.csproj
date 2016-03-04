@@ -75,6 +75,7 @@
     <Compile Include="AccountDenormalizer.cs" />
     <Compile Include="AppSystemDenormalizer.cs" />
     <Compile Include="ModuleDenormalizer.cs" />
+    <Compile Include="PermissionDenormalizer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RoleDenormalizer.cs" />
     <Compile Include="UserDenormalizer.cs" />

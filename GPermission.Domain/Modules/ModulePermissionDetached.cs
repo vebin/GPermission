@@ -12,16 +12,15 @@ namespace GPermission.Domain.Modules
     [Serializable]
     public class ModulePermissionDetached : DomainEvent<string>
     {
-        public string PermissionId { get; private set; }
-
+        public string ModulePermissionId { get; private set; }
         public ModulePermissionDetached()
         {
 
         }
 
-        public ModulePermissionDetached(Module module,string permissionId) : base()
+        public ModulePermissionDetached(Module module,string modulePermissionId) : base()
         {
-            PermissionId = permissionId;
+            ModulePermissionId = modulePermissionId;
         }
     }
 }

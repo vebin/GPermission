@@ -18,7 +18,7 @@ namespace GPermission.Domain.Modules
         private string _verifyType;
         private int _isLeaf;
         private int _isVisible;
-        private IList<string> _permissions;
+        private IDictionary<string,string> _permissions;//PermissionId ,ModulePermissionId
         private string _status;
         private int _useFlag;
 
@@ -109,34 +109,34 @@ namespace GPermission.Domain.Modules
 
         /// <summary>添加模块权限
         /// </summary>
-        public void AttachPermission(List<string> permissionIds)
+        public void AttachPermission(Dictionary<string, string> permissions)
         {
-            foreach (var permissionId in permissionIds)
+            foreach (var permission in permissions)
             {
-                if (_permissions.Contains(permissionId))
+                if (_permissions.Values.Contains(permission.Key))
                 {
-                    throw new RepeatException("该模块已经添加该条权限");
+                    throw new RepeatException("该模块权限已经添加");
                 }
             }
-            ApplyEvent(new ModulePermissionAttached(this, permissionIds));
+            ApplyEvent(new ModulePermissionAttached(this, permissions));
         }
 
         /// <summary>更新模块权限
         /// </summary>
-        public void UpdateAttachPermission(List<string> permissionIds)
+        public void UpdateAttachPermission(Dictionary<string,string> permissions)
         {
-            ApplyEvent(new ModulePermissionUpdated(this, permissionIds));
+            ApplyEvent(new ModulePermissionUpdated(this, permissions));
         }
 
         /// <summary>移除模块权限
         /// </summary>
-        public void DetachPermission(string permissionId)
+        public void DetachPermission(string modulePermissionId)
         {
-            if (!_permissions.Contains(permissionId))
+            if (!_permissions.Keys.Contains(modulePermissionId))
             {
-                throw new NotExistException("该模块下不存在此权限");
+                throw new NotExistException("该模块权限不存在");
             }
-            ApplyEvent(new ModulePermissionDetached(this, permissionId));
+            ApplyEvent(new ModulePermissionDetached(this, modulePermissionId));
         }
 
 
@@ -147,7 +147,7 @@ namespace GPermission.Domain.Modules
             _info = evnt.Info;
             _isLeaf = (int)BoolEnum.True;
             _isVisible = (int)BoolEnum.True;
-            _permissions = new List<string>();
+            _permissions = new Dictionary<string, string>();
             _status = ModuleStatus.Normal.ToString();
             _useFlag = (int)UseFlag.Useable;
         }
@@ -192,20 +192,20 @@ namespace GPermission.Domain.Modules
 
         private void Handle(ModulePermissionAttached evnt)
         {
-            foreach(var permissionId in evnt.PermissionIds)
+            foreach (var permission in evnt.Permissions)
             {
-                _permissions.Add(permissionId);
+                _permissions.Add(permission.Key, permission.Value);
             }
         }
 
         private void Handle(ModulePermissionDetached evnt)
         {
-            _permissions.Remove(evnt.PermissionId);
+            _permissions.Remove(evnt.ModulePermissionId);
         }
 
         private void Handle(ModulePermissionUpdated evnt)
         {
-            _permissions = evnt.PermissionIds;
+            _permissions = evnt.Permissions;
         }
 
         #endregion

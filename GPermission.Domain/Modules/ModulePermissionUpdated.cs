@@ -12,16 +12,16 @@ namespace GPermission.Domain.Modules
     [Serializable]
     public class ModulePermissionUpdated : DomainEvent<string>
     {
-        public List<string> PermissionIds { get; private set; }
+        public Dictionary<string,string> Permissions { get; private set; }
 
         public ModulePermissionUpdated()
         {
 
         }
 
-        public ModulePermissionUpdated(Module module,List<string> permissionIds) : base()
+        public ModulePermissionUpdated(Module module,Dictionary<string,string> permissions) : base()
         {
-            PermissionIds = permissionIds;
+            Permissions = permissions;
         }
     }
 }

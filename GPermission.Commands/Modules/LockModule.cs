@@ -9,14 +9,14 @@ namespace GPermission.Commands.Modules
 {
     /// <summary>锁定模块命令
     /// </summary>
-    public class LockedModule:Command<string>
+    public class LockModule:Command<string>
     {
-        public LockedModule()
+        public LockModule()
         {
 
         }
 
-        public LockedModule(string id):base(id)
+        public LockModule(string id):base(id)
         {
 
         }

@@ -42,15 +42,15 @@ namespace GPermission.Common
         /// <summary>模块表
         /// </summary>
         public static string ModuleTable { get; set; }
-        /// <summary>角色模块权限
-        /// </summary>
-        public static string RoleModulePermission { get; set; }
-        /// <summary>权限表
-        /// </summary>
-        public static string PermissionTable { get; set; }
         /// <summary>模块权限表
         /// </summary>
         public static string ModulePermissionTable { get; set; }
+        /// <summary>角色模块权限
+        /// </summary>
+        public static string RoleModulePermissionTable { get; set; }
+        /// <summary>权限表
+        /// </summary>
+        public static string PermissionTable { get; set; }
 
         /// <summary>账号表
         /// </summary>

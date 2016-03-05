@@ -113,7 +113,7 @@ namespace GPermission.Domain.Modules
         {
             foreach (var permission in permissions)
             {
-                if (_permissions.Values.Contains(permission.Key))
+                if (_permissions.Values.Contains(permission.Value))
                 {
                     throw new RepeatException("该模块权限已经添加");
                 }

@@ -73,6 +73,7 @@
   <ItemGroup>
     <Compile Include="AccountCommandHandler.cs" />
     <Compile Include="ModuleCommandHandler.cs" />
+    <Compile Include="PermissionCommandHandler.cs" />
     <Compile Include="RoleCommandHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserCommandHandler.cs" />

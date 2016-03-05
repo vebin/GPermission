@@ -9,14 +9,14 @@ namespace GPermission.Commands.Modules
 {
     /// <summary>解锁模块
     /// </summary>
-    public class UnLockedModule:Command<string>
+    public class UnLockModule:Command<string>
     {
-        public UnLockedModule()
+        public UnLockModule()
         {
 
         }
 
-        public UnLockedModule(string id) : base(id)
+        public UnLockModule(string id) : base(id)
         {
 
         }

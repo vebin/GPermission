@@ -15,13 +15,13 @@ namespace GPermission.Denormalizers
     /// <summary>用户持久化
     /// </summary>
     public class UserDenormalizer : AbstractDenormalizer
-        , IMessageHandler<UserCreated>                                    //创建用户
-        , IMessageHandler<UserRoleAttached>                                  //添加用户角色
+        , IMessageHandler<UserCreated>                                     //创建用户
+        , IMessageHandler<UserRoleAttached>                                //添加用户角色
         , IMessageHandler<UserRoleDetached>                                //删除用户角色   
-        , IMessageHandler<UserRoleReset>                                  //重置用户角色
-        , IMessageHandler<UserLocked>                                     //锁定用户
-        , IMessageHandler<UserUnLock>                                     //解锁用户             
-        , IMessageHandler<UserChanged>                                    //删除用户     
+        , IMessageHandler<UserRoleReset>                                   //重置用户角色
+        , IMessageHandler<UserLocked>                                      //锁定用户
+        , IMessageHandler<UserUnLock>                                      //解锁用户             
+        , IMessageHandler<UserChanged>                                     //删除用户     
     {
 
         /// <summary>创建用户

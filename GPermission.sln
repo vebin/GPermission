@@ -43,6 +43,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ClientSDK", "ClientSDK", "{
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GPermission.Client", "Client\GPermission.Client\GPermission.Client.csproj", "{D9363331-E67C-4002-BC2C-2F0DFD8DEFC9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GPermission.Admin", "GPermission.Admin\GPermission.Admin.csproj", "{A393A74B-9E87-4333-A76A-37F044B0BCF7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -109,6 +111,10 @@ Global
 		{D9363331-E67C-4002-BC2C-2F0DFD8DEFC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D9363331-E67C-4002-BC2C-2F0DFD8DEFC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D9363331-E67C-4002-BC2C-2F0DFD8DEFC9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A393A74B-9E87-4333-A76A-37F044B0BCF7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A393A74B-9E87-4333-A76A-37F044B0BCF7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A393A74B-9E87-4333-A76A-37F044B0BCF7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A393A74B-9E87-4333-A76A-37F044B0BCF7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -120,5 +126,6 @@ Global
 		{3FDE0207-5BBE-4C29-A824-038134F4E698} = {B03DA1F6-A2EF-4409-BEAD-AB3B141CC879}
 		{8EB00FBB-1814-46AA-BF81-DC9C5603CD84} = {83756725-3932-4C43-9804-54E99F2878FF}
 		{D9363331-E67C-4002-BC2C-2F0DFD8DEFC9} = {A21AEE5B-FB12-42CC-8295-8B3C05B38D6C}
+		{A393A74B-9E87-4333-A76A-37F044B0BCF7} = {83756725-3932-4C43-9804-54E99F2878FF}
 	EndGlobalSection
 EndGlobal

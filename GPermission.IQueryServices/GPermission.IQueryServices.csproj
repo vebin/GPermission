@@ -64,7 +64,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DTOs\AccountInfo.cs" />
+    <Compile Include="DTOs\UserInfo.cs" />
     <Compile Include="IAccountQueryService.cs" />
+    <Compile Include="IUserQueryService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

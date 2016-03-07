@@ -66,6 +66,7 @@
     <Compile Include="AccountQueryService.cs" />
     <Compile Include="BaseQueryService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserQueryService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GPermission.Common\GPermission.Common.csproj">

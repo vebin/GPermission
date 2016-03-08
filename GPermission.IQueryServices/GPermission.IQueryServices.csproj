@@ -69,6 +69,7 @@
     <Compile Include="DTOs\RoleInfo.cs" />
     <Compile Include="DTOs\UserInfo.cs" />
     <Compile Include="IAccountQueryService.cs" />
+    <Compile Include="IModulePermissionQueryService.cs" />
     <Compile Include="IModuleQueryService.cs" />
     <Compile Include="IPermissionQueryService.cs" />
     <Compile Include="IRoleQueryService.cs" />

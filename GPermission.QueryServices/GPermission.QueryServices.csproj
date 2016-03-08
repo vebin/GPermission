@@ -65,6 +65,7 @@
   <ItemGroup>
     <Compile Include="AccountQueryService.cs" />
     <Compile Include="BaseQueryService.cs" />
+    <Compile Include="ModulePermissionQueryService.cs" />
     <Compile Include="ModuleQueryService.cs" />
     <Compile Include="PermissionQueryService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

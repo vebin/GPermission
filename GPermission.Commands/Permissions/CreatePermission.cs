@@ -42,9 +42,11 @@ namespace GPermission.Commands.Permissions
         /// <summary>排序
         /// </summary>
         public int Sort { get; set; }
-
+        /// <summary>描述
+        /// </summary>
+        public string Describe { get; set; }
         public string ReMark { get; set; }
-        public CreatePermission(string appSystemId, string code, string name, string permissionType,int isVisible, string parentPermission = "", string assemblyName = "", string fullName = "", string permissionUrl = "", int sort = 0, string reMark = "")
+        public CreatePermission(string appSystemId, string code, string name, string permissionType,int isVisible, string parentPermission = "", string assemblyName = "", string fullName = "", string permissionUrl = "", int sort = 0,string describe="", string reMark = "")
         {
             AppSystemId = appSystemId;
             Code = code;
@@ -56,6 +58,7 @@ namespace GPermission.Commands.Permissions
             FullName = fullName;
             PermissionUrl = permissionUrl;
             Sort = sort;
+            Describe = describe;
             ReMark = reMark;
         }
     }

@@ -33,12 +33,13 @@ namespace GPermission.QueryServices
 
         /// <summary>根据用户代码查询用户
         /// </summary>
-        public UserInfo FindByCode(string code)
+        public UserInfo FindByCode(string appSystemId, string code)
         {
             using (var connection = GetConnection())
             {
                 var data = connection.QueryList<UserInfo>(new
                 {
+                    AppSystemId=appSystemId,
                     Code = code,
                     UseFlag = (int)UseFlag.Useable
                 }, ConfigSettings.UserTable).FirstOrDefault();

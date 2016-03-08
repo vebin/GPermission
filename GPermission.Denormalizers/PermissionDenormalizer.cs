@@ -46,6 +46,7 @@ namespace GPermission.Denormalizers
                     IsVisible=evnt.IsVisible,
                     Status=PermissionStatus.Normal.ToString(),
                     UseFlag=(int)UseFlag.Useable,
+                    Describe=info.Descrbie,
                     ReMark=info.ReMark,
                     Version=evnt.Version,
                     EventSequence=evnt.Sequence
@@ -69,6 +70,7 @@ namespace GPermission.Denormalizers
                     FullName = info.FullName,
                     PermissionUrl=info.PermissionUrl,
                     Sort=info.Sort,
+                    Describe=info.Describe,
                     ReMark=info.ReMark,
                     Version=evnt.Version,
                     EventSequence=evnt.Sequence

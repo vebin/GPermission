@@ -33,9 +33,12 @@ namespace GPermission.Domain.Permissions
         /// <summary>排序
         /// </summary>
         public int Sort { get; set; }
+        /// <summary>描述
+        /// </summary>
+        public string Describe { get; set; }
 
         public string ReMark { get; set; }
-        public PermissionEditableInfo(string name, string permissionType, string parentPermission = "", string assemblyName = "", string fullName = "", string permissionUrl = "", int sort = 0, string reMark = "")
+        public PermissionEditableInfo(string name, string permissionType, string parentPermission = "", string assemblyName = "", string fullName = "", string permissionUrl = "", int sort = 0,string describe="", string reMark = "")
         {
             Name = name;
             PermissionType = permissionType;
@@ -44,6 +47,7 @@ namespace GPermission.Domain.Permissions
             FullName = fullName;
             PermissionUrl = permissionUrl;
             Sort = sort;
+            Describe = describe;
             ReMark = reMark;
         }
     }

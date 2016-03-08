@@ -38,10 +38,14 @@ namespace GPermission.Domain.Modules
         /// <summary>排序
         /// </summary>
         public int Sort { get; set; }
+        /// <summary>描述
+        /// </summary>
+        public string Describe { get; set; }
+
         /// <summary>备注
         /// </summary>
         public string ReMark { get; set; }
-        public ModuleInfo(string appSystemId, string code, string name, string moduleType, string parentModule="", string linkUrl="", string assemblyName="", string fullName = "",int sort=0,string reMark="")
+        public ModuleInfo(string appSystemId, string code, string name, string moduleType, string parentModule="", string linkUrl="", string assemblyName="", string fullName = "",int sort=0,string describe="",string reMark="")
         {
             AppSystemId = appSystemId;
             Code = code;
@@ -52,6 +56,7 @@ namespace GPermission.Domain.Modules
             AssemblyName = assemblyName;
             FullName = fullName;
             Sort = sort;
+            Describe = describe;
             ReMark = reMark;
         }
     }

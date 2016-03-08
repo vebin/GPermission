@@ -49,7 +49,7 @@ namespace GPermission.CommandHandlers
             {
                 _moduleService.Exist(command.ParentModule);
                 _appSystemService.Exist(command.AppSystemId);
-                var info = new ModuleInfo(command.AppSystemId, command.Code, command.Name, command.ModuleType, command.ParentModule, command.LinkUrl, command.AssemblyName, command.FullName, command.Sort, command.ReMark);
+                var info = new ModuleInfo(command.AppSystemId, command.Code, command.Name, command.ModuleType, command.ParentModule, command.LinkUrl, command.AssemblyName, command.FullName, command.Sort,command.Describe, command.ReMark);
                 context.Add(new Module(command.AggregateRootId, info, command.VerifyType, command.IsVisible));
             });
         }
@@ -61,7 +61,7 @@ namespace GPermission.CommandHandlers
             _lockService.ExecuteInLock(typeof(Module).Name, () =>
             {
                 _moduleService.Exist(command.ParentModule);
-                var info = new ModuleEditableInfo(command.Name, command.ParentModule, command.ModuleType, command.LinkUrl, command.AssemblyName, command.FullName, command.Sort, command.ReMark);
+                var info = new ModuleEditableInfo(command.Name, command.ParentModule, command.ModuleType, command.LinkUrl, command.AssemblyName, command.FullName, command.Sort, command.Describe, command.ReMark);
                 context.Get<Module>(command.AggregateRootId).Update(info, command.VerifyType, command.IsVisible);
             });
         }

@@ -64,8 +64,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DTOs\AccountInfo.cs" />
+    <Compile Include="DTOs\ModuleInfo.cs" />
+    <Compile Include="DTOs\PermissionInfo.cs" />
+    <Compile Include="DTOs\RoleInfo.cs" />
     <Compile Include="DTOs\UserInfo.cs" />
     <Compile Include="IAccountQueryService.cs" />
+    <Compile Include="IModuleQueryService.cs" />
+    <Compile Include="IPermissionQueryService.cs" />
     <Compile Include="IRoleQueryService.cs" />
     <Compile Include="IUserQueryService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

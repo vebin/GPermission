@@ -45,12 +45,15 @@ namespace GPermission.Commands.Modules
         /// <summary>排序
         /// </summary>
         public int Sort { get; set; }
+        /// <summary>描述
+        /// </summary>
+        public string Describe { get; set; }
         /// <summary>备注
         /// </summary>
         public string ReMark { get; set; }
 
         
-        public CreateModule(string id, string appSystemId, string code, string name, string moduleType,string verifyType,int isVisible, string parentModule = "", string linkUrl = "", string assemblyName = "", string fullName = "", int sort = 0, string reMark = "") : base(id)
+        public CreateModule(string id, string appSystemId, string code, string name, string moduleType,string verifyType,int isVisible, string parentModule = "", string linkUrl = "", string assemblyName = "", string fullName = "", int sort = 0,string describe="", string reMark = "") : base(id)
         {
             AppSystemId = appSystemId;
             Code = code;
@@ -63,6 +66,7 @@ namespace GPermission.Commands.Modules
             AssemblyName = assemblyName;
             FullName = fullName;
             Sort = sort;
+            Describe = describe;
             ReMark = reMark;
         }
     }

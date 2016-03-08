@@ -41,7 +41,7 @@ namespace GPermission.CommandHandlers
             {
                 _appSystemService.Exist(command.AppSystemId);
                 _permissionService.Exist(command.ParentPermission);
-                var info = new PermissionInfo(command.AppSystemId, command.Code, command.Name, command.PermissionType, command.ParentPermission, command.AssemblyName, command.FullName, command.PermissionUrl, command.Sort, command.ReMark);
+                var info = new PermissionInfo(command.AppSystemId, command.Code, command.Name, command.PermissionType, command.ParentPermission, command.AssemblyName, command.FullName, command.PermissionUrl, command.Sort,command.Describe, command.ReMark);
                 context.Add(new Permission(command.AggregateRootId, info, command.IsVisible));
             });
         }
@@ -53,7 +53,7 @@ namespace GPermission.CommandHandlers
             _lockService.ExecuteInLock(typeof(Permission).Name, () =>
             {
                 _permissionService.Exist(command.ParentPermission);
-                var info = new PermissionEditableInfo(command.Name, command.PermissionType, command.ParentPermission, command.AssemblyName, command.FullName, command.PermissionUrl, command.Sort, command.ReMark);
+                var info = new PermissionEditableInfo(command.Name, command.PermissionType, command.ParentPermission, command.AssemblyName, command.FullName, command.PermissionUrl, command.Sort,command.Describe, command.ReMark);
                 context.Get<Permission>(command.AggregateRootId).Update(info);
             });
 

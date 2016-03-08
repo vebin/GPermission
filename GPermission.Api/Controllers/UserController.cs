@@ -22,13 +22,13 @@ namespace GPermission.Api.Controllers
         {
             //必须先获取是哪个账号,属于哪个系统
             string appSystemId = "";
-            return _userQueryService.FindAllByAppSystemId(appSystemId);
+            return _userQueryService.FindAll(appSystemId);
         }
 
         // GET: api/User/5
         public UserInfo Get(string userCode)
         {
-            return _userQueryService.FindByCode(userCode);
+            return _userQueryService.FindByCode("",userCode);
         }
 
         // POST: api/User

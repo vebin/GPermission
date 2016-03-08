@@ -4,12 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GPermission.Domain.Permissions
+namespace GPermission.IQueryServices.DTOs
 {
-    /// <summary>权限实体
+    /// <summary>权限信息实体
     /// </summary>
     public class PermissionInfo
     {
+        /// <summary>权限Id
+        /// </summary>
+        public string PermissionId { get; set; }
         /// <summary>所属系统Id
         /// </summary>
         public string AppSystemId { get; set; }
@@ -22,14 +25,10 @@ namespace GPermission.Domain.Permissions
         /// <summary>权限类型
         /// </summary>
         public string PermissionType { get; set; }
-
-        /// <summary>上级权限
-        /// </summary>
-        public string ParentPermission { get; set; }
-        /// <summary>程序集名称
+        /// <summary>程序集名
         /// </summary>
         public string AssemblyName { get; set; }
-        /// <summary>全名称
+        /// <summary>类的全名称
         /// </summary>
         public string FullName { get; set; }
         /// <summary>权限地址
@@ -38,24 +37,17 @@ namespace GPermission.Domain.Permissions
         /// <summary>排序
         /// </summary>
         public int Sort { get; set; }
+        /// <summary>是否可见
+        /// </summary>
+        public int IsVisible { get; set; }
+        /// <summary>状态
+        /// </summary>
+        public string Status { get; set; }
         /// <summary>描述
         /// </summary>
-        public string Descrbie { get; set; }
-
+        public string Describe { get; set; }
+        /// <summary>备注
+        /// </summary>
         public string ReMark { get; set; }
-        public PermissionInfo(string appSystemId,string code,string name,string permissionType,string parentPermission="",string assemblyName="",string fullName="",string permissionUrl="",int sort=0,string describe="",string reMark="")
-        {
-            AppSystemId = appSystemId;
-            Code = code;
-            Name = name;
-            PermissionType = permissionType;
-            ParentPermission = parentPermission;
-            AssemblyName = assemblyName;
-            FullName = fullName;
-            PermissionUrl = permissionUrl;
-            Sort = sort;
-            Descrbie = describe;
-            ReMark = reMark;
-        }
     }
 }

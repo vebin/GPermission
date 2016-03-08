@@ -17,10 +17,10 @@ namespace GPermission.IQueryServices
 
         /// <summary>根据用户代码查询用户
         /// </summary>
-        UserInfo FindByCode(string code);
+        UserInfo FindByCode(string appSystemId,string code);
 
         /// <summary>查询某个系统下所有用户
         /// </summary>
-        IEnumerable<UserInfo> FindAllByAppSystemId(string appSystemId);
+        IEnumerable<UserInfo> FindAll(string appSystemId);
     }
 }

@@ -38,11 +38,15 @@ namespace GPermission.Commands.Modules
         /// <summary>排序
         /// </summary>
         public int Sort { get; set; }
+        /// <summary>描述
+        /// </summary>
+        public string Describe { get; set; }
+
         /// <summary>备注
         /// </summary>
         public string ReMark { get; set; }
 
-        public UpdateModule(string id, string name, string parentModule, string moduleType,string verifyType,int isVisible, string linkUrl="", string assemblyName = "", string fullName = "",int sort=0,string reMark="") : base(id)
+        public UpdateModule(string id, string name, string parentModule, string moduleType,string verifyType,int isVisible, string linkUrl="", string assemblyName = "", string fullName = "",int sort=0,string describe="",string reMark="") : base(id)
         {
             Name = name;
             ParentModule = parentModule;
@@ -53,6 +57,7 @@ namespace GPermission.Commands.Modules
             AssemblyName = assemblyName;
             FullName = fullName;
             Sort = sort;
+            Describe = describe;
             ReMark = reMark;
         }
     }

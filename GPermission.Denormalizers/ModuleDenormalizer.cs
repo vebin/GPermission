@@ -52,6 +52,7 @@ namespace GPermission.Denormalizers
                     IsVisible=evnt.IsVisible,
                     Status=ModuleStatus.Normal.ToString(),
                     UseFlag =(int)UseFlag.Useable,
+                    Describe=info.Describe,
                     ReMark = info.ReMark,
                     Version = evnt.Version,
                     EventSequence=evnt.Sequence
@@ -75,6 +76,7 @@ namespace GPermission.Denormalizers
                     AssemblyName=info.AssemblyName,
                     FullName=info.FullName,
                     Sort=info.Sort,
+                    Describe=info.Describe,
                     ReMark=info.ReMark,
                     Version=evnt.Version,
                     EventSequence=evnt.Sequence

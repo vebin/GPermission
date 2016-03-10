@@ -64,6 +64,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccountQueryService.cs" />
+    <Compile Include="AppSystemQueryService.cs" />
     <Compile Include="BaseQueryService.cs" />
     <Compile Include="ModulePermissionQueryService.cs" />
     <Compile Include="ModuleQueryService.cs" />

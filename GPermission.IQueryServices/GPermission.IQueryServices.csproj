@@ -64,11 +64,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DTOs\AccountInfo.cs" />
+    <Compile Include="DTOs\AppSystemInfo.cs" />
     <Compile Include="DTOs\ModuleInfo.cs" />
     <Compile Include="DTOs\PermissionInfo.cs" />
     <Compile Include="DTOs\RoleInfo.cs" />
     <Compile Include="DTOs\UserInfo.cs" />
     <Compile Include="IAccountQueryService.cs" />
+    <Compile Include="IAppSystemQueryService.cs" />
     <Compile Include="IModulePermissionQueryService.cs" />
     <Compile Include="IModuleQueryService.cs" />
     <Compile Include="IPermissionQueryService.cs" />

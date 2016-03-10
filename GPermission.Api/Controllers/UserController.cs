@@ -11,6 +11,7 @@ namespace GPermission.Api.Controllers
 {
     public class UserController : ApiController
     {
+       
         private IUserQueryService _userQueryService;
         public UserController(IUserQueryService userQueryService)
         {
@@ -20,6 +21,8 @@ namespace GPermission.Api.Controllers
         //// GET: api/User
         public IEnumerable<UserInfo> Get()
         {
+            string qppSystemCode = GUtils.Untility.RequestUtils.GetString("Code");
+            
             //必须先获取是哪个账号,属于哪个系统
             string appSystemId = "";
             return _userQueryService.FindAll(appSystemId);

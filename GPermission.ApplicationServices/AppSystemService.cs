@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GPermission.ApplicationServices
 {
-    public class Class1
+    public class AppSystemService
     {
     }
 }

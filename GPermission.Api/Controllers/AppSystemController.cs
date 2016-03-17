@@ -31,7 +31,6 @@ namespace GPermission.Api.Controllers
         public AppSystemInfo Get(string code)
         {
             code = StringUtils.NormalFilter(code);
-            
             return _appSystemQueryService.FindByCode(code);
         }
 

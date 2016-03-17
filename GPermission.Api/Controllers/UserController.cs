@@ -11,13 +11,17 @@ namespace GPermission.Api.Controllers
 {
     public class UserController : ApiController
     {
-       
+        public UserController()
+        {
+
+        }
+
         private IUserQueryService _userQueryService;
         public UserController(IUserQueryService userQueryService)
         {
             _userQueryService = userQueryService;
         }
-
+        [AccountFilter]
         //// GET: api/User
         public IEnumerable<UserInfo> Get()
         {
@@ -29,15 +33,17 @@ namespace GPermission.Api.Controllers
         }
 
         // GET: api/User/5
+        [AccountFilter]
         public UserInfo Get(string userCode)
         {
-            return _userQueryService.FindByCode("",userCode);
+           
+            return _userQueryService.FindByCode("", userCode);
         }
 
         // POST: api/User
         public void Post([FromBody]string value)
         {
-
+            
         }
 
         // PUT: api/User/5

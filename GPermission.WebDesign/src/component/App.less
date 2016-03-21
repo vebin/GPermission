@@ -1,0 +1,79 @@
+@import '../common/lib.less';
+
+.container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow: hidden;
+  .header {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 80px;
+    font-size: 16px;
+    margin-bottom: 20px;
+    .clearfix;
+    .website-title {
+      float: left;
+      margin: 35px 0 0 35px;
+      color: #2db7f5;
+      font-weight: normal;
+    }
+    .user-info {
+      float: right;
+    }
+  }
+  .content {
+    position: absolute;
+    top: 100px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border-top: 1px solid #e9e9e9;
+    .clearfix;
+  }
+  .left-menu {
+    float: left;
+    width: 240px;
+    height: 100%;
+  }
+  .right-container {
+    position: relative;
+    margin-left: 240px;
+    height: 100%;
+    padding: 15px;
+    background-color: #F4F4F4;
+    .content-area {
+      position: absolute;
+      top: 40px;
+      right: 15px;
+      bottom: 15px;
+      left: 15px;
+      padding: 15px;
+      overflow: auto;
+      background-color: #fff;
+      border-radius: 4px;
+      border: 1px solid #e9e9e9;
+    }
+  }
+}
+
+.ant-menu-item .anticon {
+    font-size: 15px;
+}
+
+.mr-5 {
+  margin-right: 5px;
+}
+
+.mr-15 {
+  margin-right: 15px;
+}
+
+.mb-15 {
+  margin-bottom: 15px;
+}

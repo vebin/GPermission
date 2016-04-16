@@ -27,7 +27,7 @@ namespace GPermission.Domain.Permissions
             Assert.IsNotNullOrEmpty("权限代码", info.Code);
             Assert.IsNotNullOrEmpty("权限类型", info.PermissionType);
             Assert.IsNotInEnum("可见类型", typeof(BoolEnum), isVisiable);
-            ApplyEvent(new PermissionCreated(this,info, isVisiable));
+            ApplyEvent(new PermissionCreated(info, isVisiable));
         }
 
         /// <summary>更新权限
@@ -40,7 +40,7 @@ namespace GPermission.Domain.Permissions
             }
             Assert.IsNotNullOrEmpty("权限名称", info.Name);
             Assert.IsNotNullOrEmpty("权限类型", info.PermissionType);
-            ApplyEvent(new PermissionUpdated(this, info));
+            ApplyEvent(new PermissionUpdated(info));
         }
 
         /// <summary>设置为可见
@@ -51,7 +51,7 @@ namespace GPermission.Domain.Permissions
             {
                 throw new ValidateException("该权限已经处于可见状态");
             }
-            ApplyEvent(new PermissionVisibled(this));
+            ApplyEvent(new PermissionVisibled());
         }
 
 
@@ -63,7 +63,7 @@ namespace GPermission.Domain.Permissions
             {
                 throw new ValidateException("该权限已经处于隐藏状态");
             }
-            ApplyEvent(new PermissionInVisibled(this));
+            ApplyEvent(new PermissionInVisibled());
         }
 
         /// <summary>锁定权限
@@ -74,7 +74,7 @@ namespace GPermission.Domain.Permissions
             {
                 throw new ValidateException("该权限已经处于锁定状态");
             }
-            ApplyEvent(new PermissionLocked(this));
+            ApplyEvent(new PermissionLocked());
         }
 
         /// <summary>解锁权限
@@ -85,16 +85,16 @@ namespace GPermission.Domain.Permissions
             {
                 throw new ValidateException("该权限已经处于解锁状态");
             }
-            ApplyEvent(new PermissionUnLock(this));
+            ApplyEvent(new PermissionUnLock());
         }
-        
+
 
         /// <summary>删除权限
         /// </summary>
         public void Change(int useFlag)
         {
-            Assert.IsNotInEnum("删除标志", typeof(UseFlag), useFlag);
-            ApplyEvent(new PermissionChanged(this, useFlag));
+            Assert.IsNotInEnum("删除标志", typeof (UseFlag), useFlag);
+            ApplyEvent(new PermissionChanged(useFlag));
         }
 
 

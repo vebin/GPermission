@@ -1,15 +1,8 @@
 ﻿using ENode.Eventing;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace GPermission.Domain.Roles
 {
     /// <summary>创建角色事件
     /// </summary>
-    [Serializable]
     public class RoleCreated : DomainEvent<string>
     {
         public RoleInfo Info { get; private set; }
@@ -19,7 +12,7 @@ namespace GPermission.Domain.Roles
         {
 
         }
-        public RoleCreated(Role role,RoleInfo info,int isEnabled) : base()
+        public RoleCreated(RoleInfo info,int isEnabled)
         {
             Info = info;
             IsEnabled = isEnabled;

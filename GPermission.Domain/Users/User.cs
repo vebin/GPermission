@@ -25,7 +25,7 @@ namespace GPermission.Domain.Users
         {
             Assert.IsNotNullOrEmpty("用户代码", info.Code);
             Assert.IsNotNullOrEmpty("用户名称", info.UserName);
-            ApplyEvent(new UserCreated(this, info));
+            ApplyEvent(new UserCreated( info));
         }
 
         /// <summary>添加用户角色
@@ -36,33 +36,30 @@ namespace GPermission.Domain.Users
             {
                 throw new ValidateException("该账号已经被锁定,请先解锁账号");
             }
-            foreach (var roleId in roleIds)
+            if (roleIds.Any(roleId => _roles.Contains(roleId)))
             {
-                if (_roles.Contains(roleId))
-                {
-                    throw new RepeatException("该角色已经存在");
-                }
+                throw new RepeatException("该角色已经存在");
             }
-            ApplyEvent(new UserRoleAttached(this, roleIds));
+            ApplyEvent(new UserRoleAttached(roleIds));
         }
 
         /// <summary>删除用户角色
         /// </summary>
         public void DetachUserRole(string roleId)
         {
-            var id = _roles.Where(x => x == roleId).FirstOrDefault();
+            var id = _roles.FirstOrDefault(x => x == roleId);
             if (string.IsNullOrEmpty(id))
             {
                 throw new NotExistException("该用户的权限不存在");
             }
-            ApplyEvent(new UserRoleDetached(this, roleId));
+            ApplyEvent(new UserRoleDetached(roleId));
         }
 
         /// <summary>重置用户角色
         /// </summary>
         public void ResetUserRole(List<string> roleIds)
         {
-            ApplyEvent(new UserRoleReset(this, roleIds));
+            ApplyEvent(new UserRoleReset( roleIds));
         }
 
         /// <summary>锁定用户
@@ -73,7 +70,7 @@ namespace GPermission.Domain.Users
             {
                 throw new ValidateException("该用户已经处于锁定状态");
             }
-            ApplyEvent(new UserLocked(this));
+            ApplyEvent(new UserLocked());
         }
 
         /// <summary>解锁用户
@@ -84,15 +81,15 @@ namespace GPermission.Domain.Users
             {
                 throw new ValidateException("该用户已经解锁");
             }
-            ApplyEvent(new UserUnLock(this));
+            ApplyEvent(new UserUnLock());
         }
 
         /// <summary>删除用户
         /// </summary>
         public void Change(int useFlag)
         {
-            Assert.IsNotInEnum("删除标志", typeof(UseFlag), useFlag);
-            ApplyEvent(new UserChanged(this, useFlag));
+            Assert.IsNotInEnum("删除标志", typeof (UseFlag), useFlag);
+            ApplyEvent(new UserChanged(useFlag));
         }
 
         #region Event Handle Methods

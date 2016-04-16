@@ -1,15 +1,8 @@
 ﻿using ENode.Eventing;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace GPermission.Domain.Permissions
 {
     /// <summary>创建权限事件
     /// </summary>
-    [Serializable]
     public class PermissionCreated:DomainEvent<string>
     {
         public PermissionInfo Info { get; private  set; }
@@ -17,7 +10,7 @@ namespace GPermission.Domain.Permissions
         public PermissionCreated()
         {
         }
-        public PermissionCreated(Permission permission, PermissionInfo info,int isVisible) : base()
+        public PermissionCreated( PermissionInfo info,int isVisible) 
         {
             Info = info;
             IsVisible = isVisible;

@@ -2,10 +2,6 @@
 using GPermission.Common;
 using GPermission.Common.Enums;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GPermission.Domain.AppSystems
 {
@@ -21,19 +17,19 @@ namespace GPermission.Domain.AppSystems
 
         /// <summary>创建应用系统
         /// </summary>
-        public AppSystem(string id, AppSystemInfo info,string safeKey) : base(id)
+        public AppSystem(string id, AppSystemInfo info, string safeKey) : base(id)
         {
             Assert.IsNotNullOrEmpty("应用系统名称", info.Name);
             Assert.IsNotNullOrEmpty("应用系统代码", info.Code);
-            ApplyEvent(new AppSystemCreated(this, info,safeKey));
+            ApplyEvent(new AppSystemCreated(info, safeKey));
         }
 
         /// <summary>删除应用系统
         /// </summary>
         public void Change(int useFlag)
         {
-            Assert.IsNotInEnum("删除标志", typeof(UseFlag), useFlag);
-            ApplyEvent(new AppSystemChanged(this, useFlag));
+            Assert.IsNotInEnum("删除标志", typeof (UseFlag), useFlag);
+            ApplyEvent(new AppSystemChanged(useFlag));
         }
 
         #region Event Handle Methods

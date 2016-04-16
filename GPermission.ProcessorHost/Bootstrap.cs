@@ -68,6 +68,7 @@ namespace GPermission.ProcessorHost
             _logger = ObjectContainer.Resolve<ILoggerFactory>().Create(typeof(Bootstrap).FullName);
             _logger.Info("ECommon initialized.");
         }
+
         private static void InitializeENode()
         {
             ConfigSettings.Initialize();
@@ -87,7 +88,7 @@ namespace GPermission.ProcessorHost
             };
             var setting = new ConfigurationSetting
             {
-                SqlDefaultConnectionString = ConfigSettings.ENodeConnectionString
+                DefaultDBConfigurationSetting = new DefaultDBConfigurationSetting(ConfigSettings.ENodeConnectionString)
             };
 
             _enodeConfiguration = _ecommonConfiguration
@@ -97,13 +98,13 @@ namespace GPermission.ProcessorHost
                 .UseSqlServerLockService()
                 .UseSqlServerCommandStore()
                 .UseSqlServerEventStore()
-                .UseSqlServerSequenceMessagePublishedVersionStore()
-                .UseSqlServerMessageHandleRecordStore()
                 .UseEQueue()
                 .InitializeBusinessAssemblies(assemblies);
 
             #region 锁
-          //  ObjectContainer.Resolve<ILockService>().AddLockKey(typeof(RegionIndex).Name);
+
+            //  ObjectContainer.Resolve<ILockService>().AddLockKey(typeof(RegionIndex).Name);
+
             #endregion
 
             _logger.Info("ENode initialized.");

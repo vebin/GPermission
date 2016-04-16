@@ -1,9 +1,5 @@
 ﻿using ENode.Eventing;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GPermission.Domain.Modules
 {
@@ -21,7 +17,7 @@ namespace GPermission.Domain.Modules
 
         }
 
-        public ModuleUpdated(Module module,ModuleEditableInfo info,string verifyType,int isVisiable) : base()
+        public ModuleUpdated(ModuleEditableInfo info, string verifyType, int isVisiable)
         {
             Info = info;
             VerifyType = verifyType;

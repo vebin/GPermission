@@ -26,7 +26,7 @@ namespace GPermission.Domain.Roles
             Assert.IsNotNullOrEmpty("角色名称", info.Name);
             Assert.IsNotNullOrEmpty("角色代码", info.Code);
             Assert.IsNotInEnum("启用标志", typeof(IsEnabledEnum), isEnabled);
-            ApplyEvent(new RoleCreated(this, info, isEnabled));
+            ApplyEvent(new RoleCreated( info, isEnabled));
         }
 
         /// <summary>删除角色
@@ -34,21 +34,18 @@ namespace GPermission.Domain.Roles
         public void Change(int useFlag)
         {
             Assert.IsNotInEnum("删除标志", typeof(UseFlag), useFlag);
-            ApplyEvent(new RoleChanged(this, useFlag));
+            ApplyEvent(new RoleChanged( useFlag));
         }
 
         /// <summary>添加角色模块权限
         /// </summary>
         public void AttachModulePermission(List<string> modulePermissionIds)
         {
-            foreach (var modulePermissionId in modulePermissionIds)
+            if (modulePermissionIds.Any(modulePermissionId => _modulePermissions.Contains(modulePermissionId)))
             {
-                if (_modulePermissions.Contains(modulePermissionId))
-                {
-                    throw new RepeatException("该角色已经存在");
-                }
+                throw new RepeatException("该角色已经存在");
             }
-            ApplyEvent(new RoleModulePermissionAttached(this, modulePermissionIds));
+            ApplyEvent(new RoleModulePermissionAttached( modulePermissionIds));
         }
 
         /// <summary>删除角色模块权限
@@ -59,14 +56,14 @@ namespace GPermission.Domain.Roles
             {
                 throw new NotExistException("该角色模块权限不存在");
             }
-            ApplyEvent(new RoleModulePermissionDetached(this, modulePermissionId));
+            ApplyEvent(new RoleModulePermissionDetached(modulePermissionId));
         }
 
         /// <summary>更新角色模块权限
         /// </summary>
         public void UpdateModulePermission(List<string> modulePermissionIds)
         {
-            ApplyEvent(new RoleModulePermissionUpdated(this, modulePermissionIds));
+            ApplyEvent(new RoleModulePermissionUpdated(modulePermissionIds));
         }
 
 

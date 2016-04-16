@@ -4,8 +4,6 @@ using GPermission.Common.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GPermission.Domain.Accounts
 {
@@ -25,26 +23,24 @@ namespace GPermission.Domain.Accounts
             Assert.IsNotNullOrEmpty("账号名", info.AccountName);
             Assert.IsNotNullOrEmpty("账号密码", info.AccountPassword);
             Assert.IsNotInEnum("账号类型", typeof(AccountType), info.AccountType);
-            ApplyEvent(new AccountCreated(this, info));
+            ApplyEvent(new AccountCreated(  info));
         }
 
         public void Change(int useFlag)
         {
-            Assert.IsNotInEnum("删除标志", typeof(UseFlag), useFlag);
-            ApplyEvent(new AccountChanged(this, useFlag));
+            Assert.IsNotInEnum("删除标志", typeof (UseFlag), useFlag);
+            ApplyEvent(new AccountChanged(useFlag));
         }
+
         /// <summary>添加账号系统
         /// </summary>
         public void AttachAppSystem(List<string> appSystemIds)
         {
-            foreach (var appSystemId in appSystemIds)
+            if (appSystemIds.Any(appSystemId => _appSystems.Contains(appSystemId)))
             {
-                if(_appSystems.Contains(appSystemId))
-                {
-                    throw new RepeatException("系统已经存在");
-                }
+                throw new RepeatException("系统已经存在");
             }
-            ApplyEvent(new AppSystemAttached(this, appSystemIds));
+            ApplyEvent(new AppSystemAttached(appSystemIds));
         }
 
         /// <summary>删除账号下的系统
@@ -55,14 +51,14 @@ namespace GPermission.Domain.Accounts
             {
                 throw new NotExistException("系统不存在");
             }
-            ApplyEvent(new AppSystemDetached(this, appSystemId));
+            ApplyEvent(new AppSystemDetached(appSystemId));
         }
 
         /// <summary>重新设置账号下的系统
         /// </summary>
         public void ResetAppSystem(List<string> appSystemIds)
         {
-            ApplyEvent(new AppSystemReset(this, appSystemIds));
+            ApplyEvent(new AppSystemReset(appSystemIds));
         }
 
 

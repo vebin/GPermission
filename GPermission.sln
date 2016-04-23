@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GPermission.MessageBroker", "GPermission.MessageBroker\GPermission.MessageBroker.csproj", "{3A9F5712-73DB-4250-8FCC-FA1448E75523}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GPermission.Common", "GPermission.Common\GPermission.Common.csproj", "{5D346CB6-9956-492B-8AB4-25C0F340D106}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GPermission.Domain", "GPermission.Domain\GPermission.Domain.csproj", "{A81CF540-2E7B-4EEE-B04F-481CFCFE04E6}"
@@ -33,8 +31,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GPermission.ProcessorHost",
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "QueryServices", "QueryServices", "{B03DA1F6-A2EF-4409-BEAD-AB3B141CC879}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MessageBroker", "MessageBroker", "{50BA1976-7311-49A8-B68B-02C66B8428CD}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Host", "Host", "{83756725-3932-4C43-9804-54E99F2878FF}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{8ADDC801-8CA0-4E32-BEDF-BDEE21018373}"
@@ -53,10 +49,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{3A9F5712-73DB-4250-8FCC-FA1448E75523}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3A9F5712-73DB-4250-8FCC-FA1448E75523}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3A9F5712-73DB-4250-8FCC-FA1448E75523}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3A9F5712-73DB-4250-8FCC-FA1448E75523}.Release|Any CPU.Build.0 = Release|Any CPU
 		{5D346CB6-9956-492B-8AB4-25C0F340D106}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{5D346CB6-9956-492B-8AB4-25C0F340D106}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5D346CB6-9956-492B-8AB4-25C0F340D106}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -126,7 +118,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{3A9F5712-73DB-4250-8FCC-FA1448E75523} = {50BA1976-7311-49A8-B68B-02C66B8428CD}
 		{5D346CB6-9956-492B-8AB4-25C0F340D106} = {8ADDC801-8CA0-4E32-BEDF-BDEE21018373}
 		{8CCF1D74-90E6-4DBB-A56B-66E23346CB80} = {B03DA1F6-A2EF-4409-BEAD-AB3B141CC879}
 		{3FDE0207-5BBE-4C29-A824-038134F4E698} = {B03DA1F6-A2EF-4409-BEAD-AB3B141CC879}

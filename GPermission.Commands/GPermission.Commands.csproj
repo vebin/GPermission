@@ -71,11 +71,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Accounts\AddAppSystem.cs" />
     <Compile Include="Accounts\ChangeAccount.cs" />
     <Compile Include="Accounts\CreateAccount.cs" />
-    <Compile Include="Accounts\RemoveAppSystem.cs" />
-    <Compile Include="Accounts\ResetAppSystem.cs" />
+    <Compile Include="AppSystems\ChangeAppSystem.cs" />
+    <Compile Include="AppSystems\CreateAppSystem.cs" />
+    <Compile Include="AppSystems\UpdateAppSystem.cs" />
+    <Compile Include="AppSystems\UpdateSafeKey.cs" />
     <Compile Include="Modules\AttachModulePermission.cs" />
     <Compile Include="Modules\ChangeModule.cs" />
     <Compile Include="Modules\CreateModule.cs" />

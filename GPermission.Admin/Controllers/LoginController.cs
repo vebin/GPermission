@@ -20,6 +20,7 @@ namespace GPermission.Admin.Controllers
         /// <summary>登录页面
         /// </summary>
         [HttpGet]
+        [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Index()
         {
             return View();

@@ -1,9 +1,5 @@
-﻿using GPermission.IQueryServices.DTOs;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using GPermission.IQueryServices.Dtos;
 
 namespace GPermission.IQueryServices
 {
@@ -19,8 +15,10 @@ namespace GPermission.IQueryServices
         /// </summary>
         AppSystemInfo FindByCode(string code);
 
+
         /// <summary>应用系统分页
         /// </summary>
-        IEnumerable<AppSystemInfo> Paging(string code = "", string name = "", string status = "", string orderBy = "AppSystemId", int pageSize = 10, int pageIndex = 1);
+        IEnumerable<AppSystemInfo> Paging(string code = "", string name = "", string status = "",
+            string orderBy = "AppSystemId", int pageSize = 10, int pageIndex = 1);
     }
 }

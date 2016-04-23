@@ -32,34 +32,6 @@ namespace GPermission.Domain.Accounts
             ApplyEvent(new AccountChanged(useFlag));
         }
 
-        /// <summary>添加账号系统
-        /// </summary>
-        public void AttachAppSystem(List<string> appSystemIds)
-        {
-            if (appSystemIds.Any(appSystemId => _appSystems.Contains(appSystemId)))
-            {
-                throw new RepeatException("系统已经存在");
-            }
-            ApplyEvent(new AppSystemAttached(appSystemIds));
-        }
-
-        /// <summary>删除账号下的系统
-        /// </summary>
-        public void DetachAppSystem(string appSystemId)
-        {
-            if (!_appSystems.Contains(appSystemId))
-            {
-                throw new NotExistException("系统不存在");
-            }
-            ApplyEvent(new AppSystemDetached(appSystemId));
-        }
-
-        /// <summary>重新设置账号下的系统
-        /// </summary>
-        public void ResetAppSystem(List<string> appSystemIds)
-        {
-            ApplyEvent(new AppSystemReset(appSystemIds));
-        }
 
 
         #region Event Handle Methods

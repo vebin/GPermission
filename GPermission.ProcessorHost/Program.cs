@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.ServiceProcess;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Topshelf;
 
 namespace GPermission.ProcessorHost
 {
@@ -11,17 +6,23 @@ namespace GPermission.ProcessorHost
     {
         static void Main(string[] args)
         {
-            if (!Environment.UserInteractive)
+            HostFactory.Run(x =>
             {
-                ServiceBase.Run(new Service1());
-            }
-            else
-            {
-                Bootstrap.Initialize();
-                Bootstrap.Start();
-                Console.WriteLine("Press Enter to exit...");
-                Console.ReadLine();
-            }
+                x.Service<Bootstrap>(s =>
+                {
+                    s.ConstructUsing(name => new Bootstrap());
+                    s.WhenStarted(bs =>
+                    {
+                        bs.Initialize();
+                        bs.Start();
+                    });
+                    s.WhenStopped(bs => bs.Stop());
+                });
+                x.RunAsLocalSystem();
+                x.SetDescription("GPermission Service Host");
+                x.SetDisplayName("GPermissionService");
+                x.SetServiceName("GPermissionService");
+            });
         }
     }
 }

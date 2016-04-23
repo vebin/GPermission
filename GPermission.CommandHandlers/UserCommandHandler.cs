@@ -43,7 +43,7 @@ namespace GPermission.CommandHandlers
         {
             _lockService.ExecuteInLock(typeof(User).Name, () =>
             {
-                _appSystemService.Exist(command.AppSystemId);
+                _appSystemService.CheckExist(command.AppSystemId);
                 _userService.RegisterUserCodeIndex(command.AggregateRootId, command.Code);
                 var info = new UserInfo(command.Code, command.AppSystemId, command.UserName, command.ReMark);
                 context.Add(new User(command.AggregateRootId, info));

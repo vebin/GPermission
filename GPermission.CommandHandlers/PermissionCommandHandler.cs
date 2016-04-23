@@ -24,9 +24,9 @@ namespace GPermission.CommandHandlers
         , ICommandHandler<LockPermission>                                            //锁定权限
         , ICommandHandler<UnLockPermission>                                          //解锁权限
     {
-        private ILockService _lockService;
-        private PermissionService _permissionService;
-        private AppSystemService _appSystemService;
+        private readonly ILockService _lockService;
+        private readonly PermissionService _permissionService;
+        private readonly AppSystemService _appSystemService;
         public PermissionCommandHandler(ILockService lockService,PermissionService permissionService, AppSystemService appSystemService)
         {
             _lockService = lockService;
@@ -39,7 +39,7 @@ namespace GPermission.CommandHandlers
         {
             _lockService.ExecuteInLock(typeof(Permission).Name, () =>
             {
-                _appSystemService.Exist(command.AppSystemId);
+                _appSystemService.CheckExist(command.AppSystemId);
                 _permissionService.Exist(command.ParentPermission);
                 var info = new PermissionInfo(command.AppSystemId, command.Code, command.Name, command.PermissionType, command.ParentPermission, command.AssemblyName, command.FullName, command.PermissionUrl, command.Sort,command.Describe, command.ReMark);
                 context.Add(new Permission(command.AggregateRootId, info, command.IsVisible));

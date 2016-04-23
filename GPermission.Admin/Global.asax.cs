@@ -4,14 +4,11 @@ using ECommon.Logging;
 using ENode.Configurations;
 using GPermission.Admin.Extensions;
 using GPermission.Common;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using System.Web.Http;
 
 namespace GPermission.Admin
 {
@@ -25,7 +22,9 @@ namespace GPermission.Admin
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+            GlobalConfiguration.Configure(WebApiConfig.Register);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
 
             InitializeECommon();
             InitializeENode();

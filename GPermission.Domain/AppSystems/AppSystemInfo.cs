@@ -1,14 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GPermission.Domain.AppSystems
 {
     /// <summary>应用系统信息实体
     /// </summary>
-    [Serializable]
     public class AppSystemInfo
     {
         /// <summary>应用代码(唯一,不可变)
@@ -17,6 +12,10 @@ namespace GPermission.Domain.AppSystems
         /// <summary>应用名称
         /// </summary>
         public string Name { get; set; }
+        /// <summary>账号Id
+        /// </summary>
+        public string AccountId { get; set; }
+
         /// <summary>备注
         /// </summary>
         public string ReMark { get; set; }
@@ -29,10 +28,11 @@ namespace GPermission.Domain.AppSystems
 
         }
 
-        public AppSystemInfo(string code, string name, string reMark = "")
+        public AppSystemInfo(string code, string name,string accountId, string reMark = "")
         {
             Code = code;
             Name = name;
+            AccountId = accountId;
             ReMark = reMark;
             CreateTime = DateTime.Now;
         }

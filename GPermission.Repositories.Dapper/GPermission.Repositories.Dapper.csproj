@@ -71,6 +71,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccountRepository.cs" />
     <Compile Include="AppSystemRepository.cs" />
     <Compile Include="BaseRepository.cs" />
     <Compile Include="ModuleRepository.cs" />

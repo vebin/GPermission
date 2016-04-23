@@ -19,9 +19,9 @@ namespace GPermission.CommandHandlers
         : ICommandHandler<CreateRole>                                     //创建角色
         , ICommandHandler<ChangeRole>                                     //删除角色
     {
-        private ILockService _lockService;
-        private RoleService _roleService;
-        private AppSystemService _appSystemService;
+        private readonly ILockService _lockService;
+        private readonly RoleService _roleService;
+        private readonly AppSystemService _appSystemService;
         public RoleCommandHandler(ILockService lockService,RoleService roleService,AppSystemService appSystemService)
         {
             _lockService = lockService;
@@ -35,9 +35,13 @@ namespace GPermission.CommandHandlers
         {
             _lockService.ExecuteInLock(typeof(Role).Name, () =>
             {
-                _appSystemService.Exist(command.AppSystemId);
-                _roleService.RegisterRoleCodeIndex(command.AggregateRootId, command.Code);
-                var info = new RoleInfo(command.Code, command.AppSystemId, command.Name, command.RoleType, command.ReMark);
+                _appSystemService.CheckExist(command.AppSystemId);
+                var info = new RoleInfo(
+                    command.Code,
+                    command.AppSystemId, 
+                    command.Name, 
+                    command.RoleType, 
+                    command.ReMark);
                 context.Add(new Role(command.AggregateRootId, info, command.IsEnabled));
             });
         }

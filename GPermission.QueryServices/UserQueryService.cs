@@ -1,20 +1,16 @@
-﻿using ECommon.Components;
-using ECommon.Dapper;
+﻿using ECommon.Dapper;
 using GPermission.Common;
 using GPermission.Common.Enums;
-using GPermission.IQueryServices.DTOs;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using GPermission.IQueryServices;
+using GPermission.IQueryServices.Dtos;
 
 namespace GPermission.QueryServices
 {
     /// <summary>用户查询
     /// </summary>
-    [Component]
-    public class UserQueryService:BaseQueryService
+    public class UserQueryService:BaseQueryService,IUserQueryService
     {
         /// <summary>根据用户Id查询用户账号
         /// </summary>

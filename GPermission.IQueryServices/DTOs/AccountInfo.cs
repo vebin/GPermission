@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace GPermission.IQueryServices.DTOs
+namespace GPermission.IQueryServices.Dtos
 {
     /// <summary>账号信息Dto
     /// </summary>

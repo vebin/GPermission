@@ -3,12 +3,9 @@ using ECommon.Dapper;
 using GPermission.Common;
 using GPermission.Common.Enums;
 using GPermission.IQueryServices;
-using GPermission.IQueryServices.DTOs;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using GPermission.IQueryServices.Dtos;
 
 namespace GPermission.QueryServices
 {

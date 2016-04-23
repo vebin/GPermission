@@ -4,21 +4,17 @@ using ECommon.Logging;
 using ENode.Configurations;
 using GPermission.Common;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using ECommonConfiguration = ECommon.Configurations.Configuration;
 namespace GPermission.ProcessorHost
 {
     public class Bootstrap
     {
-        private static ILogger _logger;
-        private static ECommonConfiguration _ecommonConfiguration;
-        private static ENodeConfiguration _enodeConfiguration;
+        private  ILogger _logger;
+        private  ECommonConfiguration _ecommonConfiguration;
+        private  ENodeConfiguration _enodeConfiguration;
 
-        public static void Initialize()
+        public  void Initialize()
         {
             InitializeECommon();
             try
@@ -31,7 +27,7 @@ namespace GPermission.ProcessorHost
                 throw;
             }
         }
-        public static void Start()
+        public  void Start()
         {
             try
             {
@@ -43,7 +39,7 @@ namespace GPermission.ProcessorHost
                 throw;
             }
         }
-        public static void Stop()
+        public  void Stop()
         {
             try
             {
@@ -56,7 +52,7 @@ namespace GPermission.ProcessorHost
             }
         }
 
-        private static void InitializeECommon()
+        private  void InitializeECommon()
         {
             _ecommonConfiguration = ECommonConfiguration
                 .Create()
@@ -69,7 +65,7 @@ namespace GPermission.ProcessorHost
             _logger.Info("ECommon initialized.");
         }
 
-        private static void InitializeENode()
+        private  void InitializeENode()
         {
             ConfigSettings.Initialize();
 

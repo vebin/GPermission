@@ -48,7 +48,7 @@ namespace GPermission.CommandHandlers
             _lockService.ExecuteInLock(typeof(Module).Name, () =>
             {
                 _moduleService.Exist(command.ParentModule);
-                _appSystemService.Exist(command.AppSystemId);
+                _appSystemService.CheckExist(command.AppSystemId);
                 var info = new ModuleInfo(command.AppSystemId, command.Code, command.Name, command.ModuleType, command.ParentModule, command.LinkUrl, command.AssemblyName, command.FullName, command.Sort,command.Describe, command.ReMark);
                 context.Add(new Module(command.AggregateRootId, info, command.VerifyType, command.IsVisible));
             });

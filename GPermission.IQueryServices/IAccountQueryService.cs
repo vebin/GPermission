@@ -1,9 +1,5 @@
-﻿using GPermission.IQueryServices.DTOs;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using GPermission.IQueryServices.Dtos;
 
 namespace GPermission.IQueryServices
 {
@@ -18,5 +14,9 @@ namespace GPermission.IQueryServices
         /// <summary>根据账号名查询账号
         /// </summary>
         AccountInfo FindByName(string accountName);
+
+        /// <summary>查询全部账号
+        /// </summary>
+         IEnumerable<AccountInfo> QueryAll();
     }
 }

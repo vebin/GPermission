@@ -75,10 +75,9 @@
     <Compile Include="Accounts\AccountChanged.cs" />
     <Compile Include="Accounts\AccountCreated.cs" />
     <Compile Include="Accounts\AccountInfo.cs" />
-    <Compile Include="Accounts\AppSystemAttached.cs" />
-    <Compile Include="Accounts\AppSystemDetached.cs" />
-    <Compile Include="Accounts\AppSystemReset.cs" />
-    <Compile Include="AppSystems\AppSystemCodeIndex.cs" />
+    <Compile Include="AppSystems\AppSystemEditableInfo.cs" />
+    <Compile Include="AppSystems\AppSystemUpdated.cs" />
+    <Compile Include="AppSystems\SafeKeyUpdated.cs" />
     <Compile Include="Modules\Module.cs" />
     <Compile Include="Modules\ModuleChanged.cs" />
     <Compile Include="Modules\ModuleCreated.cs" />
@@ -103,7 +102,10 @@
     <Compile Include="Permissions\PermissionUnLock.cs" />
     <Compile Include="Permissions\PermissionUpdated.cs" />
     <Compile Include="Permissions\PermissionVisibled.cs" />
-    <Compile Include="Repositories\IAppSystemIndexRepository.cs" />
+    <Compile Include="Repositories\Dtos\AccountInfo.cs" />
+    <Compile Include="Repositories\Dtos\AppSystemInfo.cs" />
+    <Compile Include="Repositories\IAccountRepository.cs" />
+    <Compile Include="Repositories\IAppSystemRepository.cs" />
     <Compile Include="Repositories\IModuleRepository.cs" />
     <Compile Include="Repositories\IPermissionRepository.cs" />
     <Compile Include="Repositories\IRoleIndexRepository.cs" />
@@ -113,6 +115,7 @@
     <Compile Include="Roles\RoleModulePermissionAttached.cs" />
     <Compile Include="Roles\RoleModulePermissionDetached.cs" />
     <Compile Include="Roles\RoleModulePermissionUpdated.cs" />
+    <Compile Include="Services\AccountService.cs" />
     <Compile Include="Services\AppSystemService.cs" />
     <Compile Include="Services\ModuleService.cs" />
     <Compile Include="Services\PermissionService.cs" />

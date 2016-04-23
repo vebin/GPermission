@@ -1,9 +1,5 @@
-﻿using GPermission.IQueryServices.DTOs;
-using System;
+﻿using GPermission.IQueryServices.Dtos;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GPermission.IQueryServices
 {

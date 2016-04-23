@@ -72,6 +72,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccountCommandHandler.cs" />
+    <Compile Include="AppSystemCommandHandler.cs" />
     <Compile Include="ModuleCommandHandler.cs" />
     <Compile Include="PermissionCommandHandler.cs" />
     <Compile Include="RoleCommandHandler.cs" />

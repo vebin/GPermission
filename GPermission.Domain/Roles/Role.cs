@@ -4,8 +4,6 @@ using GPermission.Common.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GPermission.Domain.Roles
 {
@@ -24,10 +22,20 @@ namespace GPermission.Domain.Roles
         public Role(string id, RoleInfo info, int isEnabled) : base(id)
         {
             Assert.IsNotNullOrEmpty("角色名称", info.Name);
-            Assert.IsNotNullOrEmpty("角色代码", info.Code);
-            Assert.IsNotInEnum("启用标志", typeof(IsEnabledEnum), isEnabled);
-            ApplyEvent(new RoleCreated( info, isEnabled));
+            Assert.IsNotInEnum("启用标志", typeof (IsEnabledEnum), isEnabled);
+            ApplyEvent(new RoleCreated(info, isEnabled));
         }
+
+        /// <summary>更新角色
+        /// </summary>
+        public void Update(RoleEditableInfo info, int isEnabled)
+        {
+            Assert.IsNotNullOrEmpty("角色名称", info.Name);
+            Assert.IsNotInEnum("启用标志", typeof (IsEnabledEnum), isEnabled);
+            ApplyEvent(new RoleUpdated(info, isEnabled));
+        }
+
+
 
         /// <summary>删除角色
         /// </summary>
@@ -76,6 +84,18 @@ namespace GPermission.Domain.Roles
             _info = evnt.Info;
             _isEnabled = evnt.IsEnabled;
             _useFlag = (int)UseFlag.Useable;
+        }
+
+        private void Handle(RoleUpdated evnt)
+        {
+            var editableInfo = evnt.Info;
+            _info = new RoleInfo(_info.Code, _info.AppSystemId, editableInfo.Name, editableInfo.RoleType,
+                editableInfo.ReMark)
+            {
+                AppSystemId = _info.AppSystemId,
+                Code = _info.Code,
+                CreateTime = _info.CreateTime
+            };
         }
 
         private void Handle(RoleChanged evnt)

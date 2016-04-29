@@ -32,7 +32,7 @@ namespace GPermission.Admin.Extensions
 
     public class HandleResult
     {
-        public bool Success { get; set; }
+        public int Success { get; set; }
         public string Data { get; set; }
         public string Message { get; set; }
 
@@ -41,7 +41,7 @@ namespace GPermission.Admin.Extensions
         {
             return new HandleResult()
             {
-                Success = true,
+                Success = 1,
                 Message = message,
                 Data = data
             };
@@ -51,7 +51,7 @@ namespace GPermission.Admin.Extensions
         {
             return new HandleResult()
             {
-                Success = false,
+                Success = -1,
                 Message = errorMessage,
                 Data = data
             };

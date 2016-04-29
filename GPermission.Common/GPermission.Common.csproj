@@ -49,6 +49,7 @@
     <Compile Include="Enums\Common\UseFlag.cs" />
     <Compile Include="Enums\ModuleStatus.cs" />
     <Compile Include="Enums\PermissionStatus.cs" />
+    <Compile Include="Enums\RoleType.cs" />
     <Compile Include="Enums\UserStatus.cs" />
     <Compile Include="Exceptions\AbstractException.cs" />
     <Compile Include="Exceptions\InLockException.cs" />

@@ -5,7 +5,7 @@ using GPermission.Common.Enums;
 using GPermission.IQueryServices;
 using System.Collections.Generic;
 using System.Linq;
-using GPermission.IQueryServices.Dtos;
+using GPermission.IQueryServices.DTOs;
 
 namespace GPermission.QueryServices
 {

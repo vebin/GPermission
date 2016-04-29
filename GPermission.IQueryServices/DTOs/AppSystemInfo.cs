@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace GPermission.IQueryServices.Dtos
+namespace GPermission.IQueryServices.DTOs
 {
     /// <summary>应用系统基础信息实体
     /// </summary>

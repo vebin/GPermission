@@ -112,9 +112,11 @@
     <Compile Include="Repositories\IRoleRepository.cs" />
     <Compile Include="Repositories\IUserIndexRepository.cs" />
     <Compile Include="Roles\RoleCodeIndex.cs" />
+    <Compile Include="Roles\RoleEditableInfo.cs" />
     <Compile Include="Roles\RoleModulePermissionAttached.cs" />
     <Compile Include="Roles\RoleModulePermissionDetached.cs" />
     <Compile Include="Roles\RoleModulePermissionUpdated.cs" />
+    <Compile Include="Roles\RoleUpdated.cs" />
     <Compile Include="Services\AccountService.cs" />
     <Compile Include="Services\AppSystemService.cs" />
     <Compile Include="Services\ModuleService.cs" />

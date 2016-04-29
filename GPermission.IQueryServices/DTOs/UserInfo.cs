@@ -1,4 +1,4 @@
-﻿namespace GPermission.IQueryServices.Dtos
+﻿namespace GPermission.IQueryServices.DTOs
 {
     /// <summary>用户信息DTO
     /// </summary>

@@ -1,4 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using ECommon.Utilities;
@@ -6,41 +10,38 @@ using ENode.Commanding;
 using GPermission.Admin.Extensions;
 using GPermission.Admin.Models;
 using GPermission.Commands.AppSystems;
+using GPermission.Commands.Roles;
 using GPermission.Common.Enums;
 using GPermission.IQueryServices;
 using GPermission.IQueryServices.DTOs;
 
 namespace GPermission.Admin.Api
 {
-    public class AppSystemController : BaseApiController
+    public class RoleController : BaseApiController
     {
-        private readonly IAppSystemQueryService _appSystemQueryService;
-
-        public AppSystemController(ICommandService commandService, IAppSystemQueryService appSystemQueryService)
-            : base(commandService)
+        private readonly IRoleQueryService _roleQueryService;
+        public RoleController(ICommandService commandService,IRoleQueryService roleQueryService) : base(commandService)
         {
-            _appSystemQueryService = appSystemQueryService;
+            _roleQueryService = roleQueryService;
         }
 
-        // GET: api/AppSystem
-        public IEnumerable<AppSystemInfo> Get()
+
+        // GET: api/Role?appSystemId=xxxxxxxxx
+        public IEnumerable<RoleInfo> Get(string appSystemId)
         {
-            return new AppSystemInfo[] {};
+            return _roleQueryService.FindAll(appSystemId);
         }
 
-        // GET: api/AppSystem/5
-        public AppSystemInfo Get(string code)
+        //POST: api/Role 创建角色
+        public async Task<HandleResult> Post([FromBody] CreateRoleDto dto)
         {
-            return _appSystemQueryService.FindByCode(code);
-        }
-
-        // POST: api/AppSystem
-        public async Task<HandleResult> Post([FromBody] CreateAppSystemDto dto)
-        {
-            var command = new CreateAppSystem(
+            var command = new CreateRole(
                 ObjectId.GenerateNewStringId(),
-                GetAccount().AccountId,
+                ObjectId.GenerateNewStringId(),
+                dto.AppSystemId,
                 dto.Name,
+                dto.RoleType,
+                dto.IsEnabled,
                 dto.ReMark);
             var result = await ExecuteCommandAsync(command);
             if (result.IsSuccess())
@@ -49,11 +50,15 @@ namespace GPermission.Admin.Api
             }
             return HandleResult.FromFail(result.GetErrorMessage());
         }
-
         // PUT: api/AppSystem/5
-        public async Task<HandleResult> Put(string id, [FromBody] UpdateAppSystemDto dto)
+        public async Task<HandleResult> Put(string id, [FromBody] UpdateRole dto)
         {
-            var command = new UpdateAppSystem(id, dto.Name, dto.ReMark);
+            var command = new UpdateRole(
+                id,
+                dto.Name,
+                dto.RoleType,
+                dto.IsEnabled,
+                dto.ReMark);
             var result = await ExecuteCommandAsync(command);
             if (result.IsSuccess())
             {
@@ -62,24 +67,11 @@ namespace GPermission.Admin.Api
             return HandleResult.FromFail(result.GetErrorMessage());
         }
 
-        //更新密钥
-        public async Task<HandleResult> Put(string id)
-        {
-            var command = new UpdateSafeKey(id);
-            var result = await ExecuteCommandAsync(command);
-            if (result.IsSuccess())
-            {
-                return HandleResult.FromSuccess("密钥已更新");
-            }
-            return HandleResult.FromFail(result.GetErrorMessage());
-        }
-
-
         // DELETE: api/AppSystem/5
         public async Task<HandleResult> Delete(string id)
         {
             var useFlag = (int) UseFlag.Disabled;
-            var command = new ChangeAppSystem(id, useFlag);
+            var command = new ChangeRole(id, useFlag);
             var result = await ExecuteCommandAsync(command);
             if (result.IsSuccess())
             {
@@ -87,5 +79,6 @@ namespace GPermission.Admin.Api
             }
             return HandleResult.FromFail(result.GetErrorMessage());
         }
+
     }
 }

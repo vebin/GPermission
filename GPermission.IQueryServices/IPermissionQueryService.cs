@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using GPermission.IQueryServices.Dtos;
+using GPermission.IQueryServices.DTOs;
 
 namespace GPermission.IQueryServices
 {

@@ -63,12 +63,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Dtos\AccountInfo.cs" />
-    <Compile Include="Dtos\AppSystemInfo.cs" />
-    <Compile Include="Dtos\ModuleInfo.cs" />
-    <Compile Include="Dtos\PermissionInfo.cs" />
-    <Compile Include="Dtos\RoleInfo.cs" />
-    <Compile Include="Dtos\UserInfo.cs" />
+    <Compile Include="DTOs\AccountInfo.cs" />
+    <Compile Include="DTOs\AppSystemInfo.cs" />
+    <Compile Include="DTOs\ModuleInfo.cs" />
+    <Compile Include="DTOs\PermissionInfo.cs" />
+    <Compile Include="DTOs\RoleInfo.cs" />
+    <Compile Include="DTOs\UserInfo.cs" />
     <Compile Include="IAccountQueryService.cs" />
     <Compile Include="IAppSystemQueryService.cs" />
     <Compile Include="IModulePermissionQueryService.cs" />

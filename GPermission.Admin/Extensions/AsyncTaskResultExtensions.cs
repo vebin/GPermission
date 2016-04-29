@@ -33,11 +33,11 @@ namespace GPermission.Admin.Extensions
     public class HandleResult
     {
         public int Success { get; set; }
-        public string Data { get; set; }
+        public dynamic Data { get; set; }
         public string Message { get; set; }
 
 
-        public static HandleResult FromSuccess(string message,string data="")
+        public static HandleResult FromSuccess(string message,dynamic data=null)
         {
             return new HandleResult()
             {
@@ -47,7 +47,7 @@ namespace GPermission.Admin.Extensions
             };
         }
 
-        public static HandleResult FromFail(string errorMessage, string data = "")
+        public static HandleResult FromFail(string errorMessage, dynamic data = null)
         {
             return new HandleResult()
             {

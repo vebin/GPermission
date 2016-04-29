@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -56,15 +57,16 @@ namespace GPermission.Common
         /// </summary>
         public static string AccountTable { get; set; }
 
+        public static IPAddress BrokerIp { get; set; }
         public static int BrokerProducerPort { get; set; }
         public static int BrokerConsumerPort { get; set; }
         public static int BrokerAdminPort { get; set; }
-
+        public static int CommandBindingPort { get; set; }
         public static void Initialize()
         {
-            if (ConfigurationManager.ConnectionStrings["Enode"] != null)
+            if (ConfigurationManager.ConnectionStrings["ENode"] != null)
             {
-                ENodeConnectionString = ConfigurationManager.ConnectionStrings["Enode"].ConnectionString;
+                ENodeConnectionString = ConfigurationManager.ConnectionStrings["ENode"].ConnectionString;
             }
 
             if (ConfigurationManager.ConnectionStrings["GPermission"] != null)
@@ -85,9 +87,28 @@ namespace GPermission.Common
             ModulePermissionTable = "ModulePermission";
             AccountTable = "Account";
 
-            BrokerProducerPort = 10000;
-            BrokerConsumerPort = 10001;
-            BrokerAdminPort = 10002;
+            if (ConfigurationManager.ConnectionStrings["BrokerIp"] != null)
+            {
+                BrokerIp = IPAddress.Parse(ConfigurationManager.AppSettings["BrokerIp"]);
+            }
+            if (ConfigurationManager.ConnectionStrings["BrokerProducerPort"] != null)
+            {
+                BrokerProducerPort = int.Parse(ConfigurationManager.AppSettings["BrokerProducerPort"]);
+            }
+            if (ConfigurationManager.ConnectionStrings["BrokerConsumerPort"] != null)
+            {
+                BrokerConsumerPort = int.Parse(ConfigurationManager.AppSettings["BrokerConsumerPort"]);
+            }
+
+            if (ConfigurationManager.ConnectionStrings["BrokerAdminPort"] != null)
+            {
+                BrokerAdminPort = int.Parse(ConfigurationManager.AppSettings["BrokerAdminPort"]);
+            }
+            if (ConfigurationManager.ConnectionStrings["CommandBindingPort"] != null)
+            {
+                CommandBindingPort = int.Parse(ConfigurationManager.AppSettings["CommandBindingPort"]);
+            }
+
         }
     }
 }

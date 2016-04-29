@@ -185,6 +185,7 @@
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\CreateAppSystemDto.cs" />
     <Compile Include="Models\CreateRoleDto.cs" />
+    <Compile Include="Models\CreateUserDto.cs" />
     <Compile Include="Models\UpdateAppSystemDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

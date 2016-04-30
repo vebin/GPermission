@@ -33,10 +33,11 @@ namespace GPermission.Admin.Api
         }
 
         //GET: api/User?appSystemId=3
-        public IEnumerable<UserInfo> Get2(string appSystemId)
+        public IEnumerable<UserInfo> Get(string appSystemId)
         {
             return _userQueryService.FindAllByAppSystemId(appSystemId);
         }
+
 
 
         // POST: api/User

@@ -33,30 +33,35 @@ namespace GPermission.ProcessorHost
 
             var producerSetting = new ProducerSetting
             {
-                BrokerAddress = new IPEndPoint(SocketUtils.GetLocalIPV4(), ConfigSettings.BrokerProducerPort),
-                BrokerAdminAddress = new IPEndPoint(SocketUtils.GetLocalIPV4(), ConfigSettings.BrokerAdminPort)
+                BrokerAddress = new IPEndPoint(ConfigSettings.BrokerIp, ConfigSettings.BrokerProducerPort),
+                BrokerAdminAddress = new IPEndPoint(ConfigSettings.BrokerIp, ConfigSettings.BrokerAdminPort)
             };
             var consumerSetting = new ConsumerSetting
             {
-                BrokerAddress = new IPEndPoint(SocketUtils.GetLocalIPV4(), ConfigSettings.BrokerConsumerPort),
-                BrokerAdminAddress = new IPEndPoint(SocketUtils.GetLocalIPV4(), ConfigSettings.BrokerAdminPort)
+                BrokerAddress = new IPEndPoint(ConfigSettings.BrokerIp, ConfigSettings.BrokerConsumerPort),
+                BrokerAdminAddress = new IPEndPoint(ConfigSettings.BrokerIp, ConfigSettings.BrokerAdminPort)
             };
 
             _applicationMessagePublisher = new ApplicationMessagePublisher(producerSetting);
             _domainEventPublisher = new DomainEventPublisher(producerSetting);
             _exceptionPublisher = new PublishableExceptionPublisher(producerSetting);
 
-            configuration.SetDefault<IMessagePublisher<IApplicationMessage>, ApplicationMessagePublisher>(_applicationMessagePublisher);
-            configuration.SetDefault<IMessagePublisher<DomainEventStreamMessage>, DomainEventPublisher>(_domainEventPublisher);
-            configuration.SetDefault<IMessagePublisher<IPublishableException>, PublishableExceptionPublisher>(_exceptionPublisher);
+            configuration.SetDefault<IMessagePublisher<IApplicationMessage>, ApplicationMessagePublisher>(
+                _applicationMessagePublisher);
+            configuration.SetDefault<IMessagePublisher<DomainEventStreamMessage>, DomainEventPublisher>(
+                _domainEventPublisher);
+            configuration.SetDefault<IMessagePublisher<IPublishableException>, PublishableExceptionPublisher>(
+                _exceptionPublisher);
 
-            _commandConsumer = new CommandConsumer("GPermissionCommandConsumerGroup", consumerSetting).Subscribe(Topics.GPermissionCommandTopic);
-            _eventConsumer = new DomainEventConsumer("GPermissionEventConsumerGroup", consumerSetting).Subscribe(Topics.GPermissionDomainEventTopic);
-            
-            _exceptionConsumer = new PublishableExceptionConsumer("GPermissionExceptionConsumerGroup", consumerSetting).Subscribe(Topics.GPermissionExceptionTopic);
-
+            _commandConsumer = new CommandConsumer("GPermissionCommandConsumerGroup", consumerSetting).Subscribe(
+                Topics.GPermissionCommandTopic);
+            _eventConsumer = new DomainEventConsumer("GPermissionEventConsumerGroup", consumerSetting).Subscribe(
+                Topics.GPermissionDomainEventTopic);
+            _exceptionConsumer = new PublishableExceptionConsumer("GPermissionExceptionConsumerGroup", consumerSetting)
+                .Subscribe(Topics.GPermissionExceptionTopic);
             return enodeConfiguration;
         }
+
         public static ENodeConfiguration StartEQueue(this ENodeConfiguration enodeConfiguration)
         {
             _exceptionConsumer.Start();

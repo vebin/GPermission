@@ -19,10 +19,10 @@ namespace GPermission.Admin.Extensions
 
             configuration.RegisterEQueueComponents();
 
-            _commandService = new CommandService(new CommandResultProcessor(new IPEndPoint(SocketUtils.GetLocalIPV4(), 9002)), new ProducerSetting
+            _commandService = new CommandService(new CommandResultProcessor(new IPEndPoint(ConfigSettings.CommandBindingPort, 9002)), new ProducerSetting
             {
-                BrokerAddress = new IPEndPoint(SocketUtils.GetLocalIPV4(), ConfigSettings.BrokerProducerPort),
-                BrokerAdminAddress = new IPEndPoint(SocketUtils.GetLocalIPV4(), ConfigSettings.BrokerAdminPort)
+                BrokerAddress = new IPEndPoint(ConfigSettings.BrokerIp, ConfigSettings.BrokerProducerPort),
+                BrokerAdminAddress = new IPEndPoint(ConfigSettings.BrokerIp, ConfigSettings.BrokerAdminPort)
             });
 
             configuration.SetDefault<ICommandService, CommandService>(_commandService);

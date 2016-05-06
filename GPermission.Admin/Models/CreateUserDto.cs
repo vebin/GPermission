@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace GPermission.Admin.Models
+﻿namespace GPermission.Admin.Models
 {
     /// <summary>创建用户
     /// </summary>

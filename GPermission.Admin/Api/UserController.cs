@@ -60,18 +60,29 @@ namespace GPermission.Admin.Api
 
         // PUT: api/User/5
 
-        //public async Task<HandleResult> Put(string id, [FromBody] string status)
-        //{
-        //    ICommand command;
-        //    if(status==UserStatus.Normal.ToString())
-        //      command = new LockedUser(id);
-        //    var result = await ExecuteCommandAsync(command);
-        //    if (result.IsSuccess())
-        //    {
-        //        return HandleResult.FromSuccess("锁定成功");
-        //    }
-        //    return HandleResult.FromFail(result.GetErrorMessage());
-        //}
+        public async Task<HandleResult> Put(string id)
+        {
+            var command = new LockedUser(id);
+            var result = await ExecuteCommandAsync(command);
+            if (result.IsSuccess())
+            {
+                return HandleResult.FromSuccess("锁定成功");
+            }
+            return HandleResult.FromFail(result.GetErrorMessage());
+        }
+
+        //PUT: api/User?id=5&u=xx
+        public async Task<HandleResult> Put(string id, string u)
+        {
+            var command = new UnLockedUser(id);
+            var result = await ExecuteCommandAsync(command);
+            if (result.IsSuccess())
+            {
+                return HandleResult.FromSuccess("解锁成功");
+            }
+            return HandleResult.FromFail(result.GetErrorMessage());
+        }
+
 
         // DELETE: api/User/5
 

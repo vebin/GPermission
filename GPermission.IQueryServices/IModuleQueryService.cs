@@ -15,12 +15,16 @@ namespace GPermission.IQueryServices
         /// </summary>
         ModuleInfo FindByCode(string appSystemId, string code);
 
+        /// <summary>查询某个模块类型的最高级模块
+        /// </summary>
+        IEnumerable<ModuleInfo> FindModuleTypeHighests(string appSystemId, string moduleType);
+
         /// <summary>查询最高级模块
         /// </summary>
-        IEnumerable<ModuleInfo> FindHighests(string appSystemId, string moduleType);
+        IEnumerable<ModuleInfo> FindHighests(string appSystemId);
 
         /// <summary>查询所有子模块
         /// </summary>
-        IEnumerable<ModuleInfo> FindSons(string appSystemId, string moduleType, string parentModule);
+        IEnumerable<ModuleInfo> FindSons(string appSystemId, string parentModule);
     }
 }

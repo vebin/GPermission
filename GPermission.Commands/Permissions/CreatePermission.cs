@@ -1,9 +1,4 @@
 ﻿using ENode.Commanding;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GPermission.Commands.Permissions
 {
@@ -46,7 +41,10 @@ namespace GPermission.Commands.Permissions
         /// </summary>
         public string Describe { get; set; }
         public string ReMark { get; set; }
-        public CreatePermission(string appSystemId, string code, string name, string permissionType,int isVisible, string parentPermission = "", string assemblyName = "", string fullName = "", string permissionUrl = "", int sort = 0,string describe="", string reMark = "")
+
+        public CreatePermission(string id, string appSystemId, string code, string name, string permissionType,
+            int isVisible, string parentPermission = "", string assemblyName = "", string fullName = "",
+            string permissionUrl = "", int sort = 0, string describe = "", string reMark = "") : base(id)
         {
             AppSystemId = appSystemId;
             Code = code;

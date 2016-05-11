@@ -4,6 +4,7 @@ using GPermission.Common.Enums;
 using GPermission.IQueryServices;
 using System.Collections.Generic;
 using System.Linq;
+using Dapper;
 using GPermission.IQueryServices.DTOs;
 
 namespace GPermission.QueryServices
@@ -52,6 +53,19 @@ namespace GPermission.QueryServices
                     AppSystemId = appSystemId,
                     UseFlag = (int)UseFlag.Useable
                 }, ConfigSettings.RoleTable);
+            }
+        }
+
+        /// <summary>根据用户Id,查询用户所拥有的角色
+        /// </summary>
+        public IEnumerable<RoleInfo> FindUserRole(string userId)
+        {
+            using (var connection = GetConnection())
+            {
+                string sql = string.Format(
+                    "select * from {0} a inner join {1} b on a.RoleId=b.RoleId where b.UserId=@UserId and a.UseFlag=@UseFlag",
+                    ConfigSettings.RoleTable, ConfigSettings.UserRoleTable);
+                return connection.Query<RoleInfo>(sql, new {UserId = userId, UseFlag = (int) UseFlag.Useable});
             }
         }
     }

@@ -42,9 +42,9 @@ namespace GPermission.QueryServices
             }
         }
 
-        /// <summary>查询最高级权限
+        /// <summary>查询某类型的最高级权限
         /// </summary>
-        public IEnumerable<PermissionInfo> FindHighests(string appSystemId,string permissionType)
+        public IEnumerable<PermissionInfo> FindPermissionTypeHighests(string appSystemId,string permissionType)
         {
             using (var connection = GetConnection())
             {
@@ -57,21 +57,37 @@ namespace GPermission.QueryServices
             }
         }
 
+        /// <summary>查询最高级权限
+        /// </summary>
+        public IEnumerable<PermissionInfo> FindHighests(string appSystemId)
+        {
+            using (var connection=GetConnection())
+            {
+                return connection.QueryList<PermissionInfo>(new
+                {
+                    AppSystemId = appSystemId,
+                    UseFlag = (int)UseFlag.Useable
+                }, ConfigSettings.PermissionTable);
+            }
+        }
+
+
         /// <summary>查询所有子权限
         /// </summary>
-        public IEnumerable<PermissionInfo> FindSons(string appSystemId, string permissionType, string parentPermission)
+        public IEnumerable<PermissionInfo> FindSons(string appSystemId, string parentPermission)
         {
             using (var connection = GetConnection())
             {
                 return connection.QueryList<PermissionInfo>(new
                 {
                     AppSystemId = appSystemId,
-                    PermissionType = permissionType,
                     ParentPermission=parentPermission,
                     UseFlag = (int)UseFlag.Useable
                 }, ConfigSettings.PermissionTable);
             }
         }
+
+
 
         /// <summary>查询模块下的权限
         /// </summary>
@@ -79,7 +95,7 @@ namespace GPermission.QueryServices
         {
             using (var connection = GetConnection())
             {
-                string sql = string.Format(@"Select b.* from {0} a inner join {1} b on a.ModuleId=b.ModuleId where a.ModuleId=@ModuleId and a.ModuleId=@ModuleId and b.UseFlag=@UseFlag", ConfigSettings.PermissionTable, ConfigSettings.ModulePermissionTable);
+                string sql = string.Format(@"select b.* from {0} a inner join {1} b on a.ModuleId=b.ModuleId where a.ModuleId=@ModuleId and a.ModuleId=@ModuleId and b.UseFlag=@UseFlag", ConfigSettings.PermissionTable, ConfigSettings.ModulePermissionTable);
                 var data = connection.Query<PermissionInfo>(sql, new { AppSystemId = appSystemId, ModuleId = moduleId, UseFlag = (int)UseFlag.Useable });
                 return data;
             }

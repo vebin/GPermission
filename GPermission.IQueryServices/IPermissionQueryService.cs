@@ -15,13 +15,17 @@ namespace GPermission.IQueryServices
         /// </summary>
         PermissionInfo FindByCode(string appSystemId, string code);
 
+        /// <summary>查询某类型的最高级权限
+        /// </summary>
+        IEnumerable<PermissionInfo> FindPermissionTypeHighests(string appSystemId, string permissionType);
+
         /// <summary>查询最高级权限
         /// </summary>
-        IEnumerable<PermissionInfo> FindHighests(string appSystemId, string permissionType);
+        IEnumerable<PermissionInfo> FindHighests(string appSystemId);
 
         /// <summary>查询所有子权限
         /// </summary>
-        IEnumerable<PermissionInfo> FindSons(string appSystemId, string permissionType, string parentPermission);
+        IEnumerable<PermissionInfo> FindSons(string appSystemId, string parentPermission);
 
         /// <summary>查询模块下的权限
         /// </summary>

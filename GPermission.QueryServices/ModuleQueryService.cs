@@ -41,9 +41,9 @@ namespace GPermission.QueryServices
             }
         }
 
-        /// <summary>查询最高级模块
+        /// <summary>查询某个模块类型的最高模块
         /// </summary>
-        public IEnumerable<ModuleInfo> FindHighests(string appSystemId, string moduleType)
+        public IEnumerable<ModuleInfo> FindModuleTypeHighests(string appSystemId, string moduleType)
         {
             using (var connection = GetConnection())
             {
@@ -51,22 +51,37 @@ namespace GPermission.QueryServices
                 {
                     AppSystemId=appSystemId,
                     ModuleType=moduleType,
-                    ParentModule=string.Empty,
+                    ParentModule="",
                     UseFlag=(int)UseFlag.Useable
                 }, ConfigSettings.ModuleTable);
             }
         }
 
+        /// <summary>查询某系统最高模块
+        /// </summary>
+        public IEnumerable<ModuleInfo> FindHighests(string appSystemId)
+        {
+            using (var connection = GetConnection())
+            {
+                return connection.QueryList<ModuleInfo>(new
+                {
+                    AppSystemId = appSystemId,
+                    ParentModule = "",
+                    UseFlag = (int) UseFlag.Useable
+                }, ConfigSettings.ModuleTable);
+            }
+        }
+         
+        
         /// <summary>查询所有子模块
         /// </summary>
-        public IEnumerable<ModuleInfo> FindSons(string appSystemId, string moduleType,string parentModule)
+        public IEnumerable<ModuleInfo> FindSons(string appSystemId,string parentModule)
         {
             using (var connection = GetConnection())
             {
                 return connection.QueryList<ModuleInfo>(new
                 {
                     AppSystemId=appSystemId,
-                    ModuleType=moduleType,
                     ParentModule=parentModule
                 }, ConfigSettings.ModuleTable);
             }

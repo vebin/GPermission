@@ -166,8 +166,11 @@
   <ItemGroup>
     <Compile Include="Api\AppSystemController.cs" />
     <Compile Include="Api\BaseApiController.cs" />
+    <Compile Include="Api\ModuleController.cs" />
+    <Compile Include="Api\PermissionController.cs" />
     <Compile Include="Api\RoleController.cs" />
     <Compile Include="Api\UserController.cs" />
+    <Compile Include="Api\UserRoleController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -184,9 +187,13 @@
     </Compile>
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\CreateAppSystemDto.cs" />
+    <Compile Include="Models\CreateModuleDto.cs" />
+    <Compile Include="Models\CreatePermissionDto.cs" />
     <Compile Include="Models\CreateRoleDto.cs" />
     <Compile Include="Models\CreateUserDto.cs" />
     <Compile Include="Models\UpdateAppSystemDto.cs" />
+    <Compile Include="Models\UpdateModuleDto.cs" />
+    <Compile Include="Models\UpdatePermissionDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

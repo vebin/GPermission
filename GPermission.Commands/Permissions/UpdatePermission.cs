@@ -1,9 +1,4 @@
 ﻿using ENode.Commanding;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GPermission.Commands.Permissions
 {
@@ -38,7 +33,10 @@ namespace GPermission.Commands.Permissions
         public string Describe { get; set; }
 
         public string ReMark { get; set; }
-        public UpdatePermission(string name, string permissionType, string parentPermission = "", string assemblyName = "", string fullName = "", string permissionUrl = "", int sort = 0,string describe="", string reMark = "")
+
+        public UpdatePermission(string id, string name, string permissionType, string parentPermission = "",
+            string assemblyName = "", string fullName = "", string permissionUrl = "", int sort = 0,
+            string describe = "", string reMark = "") : base(id)
         {
             Name = name;
             PermissionType = permissionType;

@@ -18,5 +18,9 @@ namespace GPermission.IQueryServices
         /// <summary>根据系统Id查询所有的角色
         /// </summary>
         IEnumerable<RoleInfo> FindAll(string appSystemId);
+        
+        /// <summary>根据用户Id,查询用户所拥有的角色
+        /// </summary>
+        IEnumerable<RoleInfo> FindUserRole(string userId);
     }
 }

@@ -14,7 +14,7 @@ namespace GPermission.Domain.Modules
         private string _verifyType;
         private int _isLeaf;
         private int _isVisible;
-        private IDictionary<string,string> _permissions;//PermissionId ,ModulePermissionId
+        private IDictionary<string,string> _permissions; //PermissionId ,ModulePermissionId
         private string _status;
         private int _useFlag;
 
@@ -23,7 +23,6 @@ namespace GPermission.Domain.Modules
         public Module(string id, ModuleInfo info, string verifyType, int isVisible) : base(id)
         {
             Assert.IsNotNullOrEmpty("模块名称", info.Name);
-
             ApplyEvent(new ModuleCreated(info, verifyType, isVisible));
         }
 
@@ -148,7 +147,15 @@ namespace GPermission.Domain.Modules
         private void Handle(ModuleUpdated evnt)
         {
             var editableInfo = evnt.Info;
-            _info = new ModuleInfo(_info.AppSystemId, _info.Code, editableInfo.Name, editableInfo.ModuleType, editableInfo.ParentModule, editableInfo.LinkUrl, editableInfo.AssemblyName, editableInfo.FullName,editableInfo.Sort,editableInfo.ReMark);
+            _info = new ModuleInfo(
+                _info.AppSystemId,
+                _info.Code,
+                editableInfo.Name,
+                editableInfo.ModuleType,
+                editableInfo.ParentModule,
+                editableInfo.LinkUrl,
+                editableInfo.Sort,
+                editableInfo.ReMark);
             _isVisible = evnt.IsVisiable;
             _verifyType = evnt.VerifyType;
         }

@@ -33,15 +33,25 @@ namespace GPermission.CommandHandlers
             _permissionService = permissionService;
             _appSystemService = appSystemService;
         }
+
         /// <summary>创建权限
         /// </summary>
         public void Handle(ICommandContext context, CreatePermission command)
         {
-            _lockService.ExecuteInLock(typeof(Permission).Name, () =>
+            _lockService.ExecuteInLock(typeof (Permission).Name, () =>
             {
                 _appSystemService.CheckExist(command.AppSystemId);
                 _permissionService.Exist(command.ParentPermission);
-                var info = new PermissionInfo(command.AppSystemId, command.Code, command.Name, command.PermissionType, command.ParentPermission, command.AssemblyName, command.FullName, command.PermissionUrl, command.Sort,command.Describe, command.ReMark);
+                var info = new PermissionInfo(
+                    command.AppSystemId,
+                    command.Code,
+                    command.Name,
+                    command.PermissionType,
+                    command.ParentPermission,
+                    command.PermissionUrl,
+                    command.Sort,
+                    command.Describe,
+                    command.ReMark);
                 context.Add(new Permission(command.AggregateRootId, info, command.IsVisible));
             });
         }
@@ -50,13 +60,19 @@ namespace GPermission.CommandHandlers
         /// </summary>
         public void Handle(ICommandContext context, UpdatePermission command)
         {
-            _lockService.ExecuteInLock(typeof(Permission).Name, () =>
+            _lockService.ExecuteInLock(typeof (Permission).Name, () =>
             {
                 _permissionService.Exist(command.ParentPermission);
-                var info = new PermissionEditableInfo(command.Name, command.PermissionType, command.ParentPermission, command.AssemblyName, command.FullName, command.PermissionUrl, command.Sort,command.Describe, command.ReMark);
+                var info = new PermissionEditableInfo(
+                    command.Name,
+                    command.PermissionType,
+                    command.ParentPermission,
+                    command.PermissionUrl,
+                    command.Sort,
+                    command.Describe,
+                    command.ReMark);
                 context.Get<Permission>(command.AggregateRootId).Update(info);
             });
-
         }
 
         /// <summary>删除权限

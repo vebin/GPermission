@@ -20,12 +20,6 @@
         /// <summary>上级权限
         /// </summary>
         public string ParentPermission { get; set; }
-        /// <summary>程序集名称
-        /// </summary>
-        public string AssemblyName { get; set; }
-        /// <summary>全名称
-        /// </summary>
-        public string FullName { get; set; }
         /// <summary>权限地址
         /// </summary>
         public string PermissionUrl { get; set; }

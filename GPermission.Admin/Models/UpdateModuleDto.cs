@@ -33,14 +33,6 @@ namespace GPermission.Admin.Models
         /// </summary>
         public string LinkUrl { get; set; }
 
-        /// <summary>全名称
-        /// </summary>
-        public string AssemblyName { get; set; }
-
-        /// <summary>全名称
-        /// </summary>
-        public string FullName { get; set; }
-
         /// <summary>排序
         /// </summary>
         public int Sort { get; set; }

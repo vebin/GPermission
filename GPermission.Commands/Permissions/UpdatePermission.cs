@@ -16,12 +16,6 @@ namespace GPermission.Commands.Permissions
         /// <summary>上级权限
         /// </summary>
         public string ParentPermission { get; set; }
-        /// <summary>程序集名称
-        /// </summary>
-        public string AssemblyName { get; set; }
-        /// <summary>全名称
-        /// </summary>
-        public string FullName { get; set; }
         /// <summary>权限地址
         /// </summary>
         public string PermissionUrl { get; set; }
@@ -35,14 +29,11 @@ namespace GPermission.Commands.Permissions
         public string ReMark { get; set; }
 
         public UpdatePermission(string id, string name, string permissionType, string parentPermission = "",
-            string assemblyName = "", string fullName = "", string permissionUrl = "", int sort = 0,
-            string describe = "", string reMark = "") : base(id)
+            string permissionUrl = "", int sort = 0, string describe = "", string reMark = "") : base(id)
         {
             Name = name;
             PermissionType = permissionType;
             ParentPermission = parentPermission;
-            AssemblyName = assemblyName;
-            FullName = fullName;
             PermissionUrl = permissionUrl;
             Sort = sort;
             Describe = describe;

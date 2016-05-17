@@ -26,18 +26,17 @@ namespace GPermission.QueryServices
                 }, ConfigSettings.PermissionTable).FirstOrDefault();
             }
         }
-        
+
         /// <summary>根据权限代码查询权限
         /// </summary>
-        public PermissionInfo FindByCode(string appSystemId, string code)
+        public PermissionInfo FindByCode(string code)
         {
-            using(var connection=GetConnection())
+            using (var connection = GetConnection())
             {
                 return connection.QueryList<PermissionInfo>(new
                 {
-                    AppSystemId=appSystemId,
-                    Code=code,
-                    UseFlag=(int)UseFlag.Useable
+                    Code = code,
+                    UseFlag = (int) UseFlag.Useable
                 }, ConfigSettings.PermissionTable).FirstOrDefault();
             }
         }
@@ -66,6 +65,7 @@ namespace GPermission.QueryServices
                 return connection.QueryList<PermissionInfo>(new
                 {
                     AppSystemId = appSystemId,
+                    ParentPermission="",
                     UseFlag = (int)UseFlag.Useable
                 }, ConfigSettings.PermissionTable);
             }

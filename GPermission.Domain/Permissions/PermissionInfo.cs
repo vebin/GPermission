@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace GPermission.Domain.Permissions
+﻿namespace GPermission.Domain.Permissions
 {
     /// <summary>权限实体
     /// </summary>
@@ -26,12 +20,6 @@ namespace GPermission.Domain.Permissions
         /// <summary>上级权限
         /// </summary>
         public string ParentPermission { get; set; }
-        /// <summary>程序集名称
-        /// </summary>
-        public string AssemblyName { get; set; }
-        /// <summary>全名称
-        /// </summary>
-        public string FullName { get; set; }
         /// <summary>权限地址
         /// </summary>
         public string PermissionUrl { get; set; }
@@ -43,15 +31,16 @@ namespace GPermission.Domain.Permissions
         public string Descrbie { get; set; }
 
         public string ReMark { get; set; }
-        public PermissionInfo(string appSystemId,string code,string name,string permissionType,string parentPermission="",string assemblyName="",string fullName="",string permissionUrl="",int sort=0,string describe="",string reMark="")
+
+        public PermissionInfo(string appSystemId, string code, string name, string permissionType,
+            string parentPermission = "", string permissionUrl = "", int sort = 0, string describe = "",
+            string reMark = "")
         {
             AppSystemId = appSystemId;
             Code = code;
             Name = name;
             PermissionType = permissionType;
             ParentPermission = parentPermission;
-            AssemblyName = assemblyName;
-            FullName = fullName;
             PermissionUrl = permissionUrl;
             Sort = sort;
             Descrbie = describe;

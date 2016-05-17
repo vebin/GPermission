@@ -13,7 +13,7 @@ namespace GPermission.IQueryServices
 
         /// <summary>根据权限代码查询权限
         /// </summary>
-        PermissionInfo FindByCode(string appSystemId, string code);
+        PermissionInfo FindByCode(string code);
 
         /// <summary>查询某类型的最高级权限
         /// </summary>

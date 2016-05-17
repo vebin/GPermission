@@ -111,7 +111,14 @@ namespace GPermission.Domain.Permissions
         private void Handle(PermissionUpdated evnt)
         {
             var editableInfo = evnt.Info;
-            _info = new PermissionInfo(_info.AppSystemId, _info.Code, editableInfo.Name, editableInfo.PermissionType, editableInfo.ParentPermission, editableInfo.AssemblyName, editableInfo.FullName, editableInfo.PermissionUrl, editableInfo.Sort, editableInfo.ReMark);
+            _info = new PermissionInfo(_info.AppSystemId,
+                _info.Code,
+                editableInfo.Name,
+                editableInfo.PermissionType,
+                editableInfo.ParentPermission,
+                editableInfo.PermissionUrl,
+                editableInfo.Sort,
+                editableInfo.ReMark);
         }
 
         private void Handle(PermissionVisibled evnt)

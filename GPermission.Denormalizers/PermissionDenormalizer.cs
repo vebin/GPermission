@@ -39,8 +39,6 @@ namespace GPermission.Denormalizers
                     Name=info.Name,
                     PermissionType=info.PermissionType,
                     ParentPermission=info.ParentPermission,
-                    AssemblyName=info.AssemblyName,
-                    FullName=info.FullName,
                     PermissionUrl=info.PermissionUrl,
                     Sort=info.Sort,
                     IsVisible=evnt.IsVisible,
@@ -66,8 +64,6 @@ namespace GPermission.Denormalizers
                     Name = info.Name,
                     PermissionType = info.PermissionType,
                     ParentPermission = info.ParentPermission,
-                    AssemblyName = info.AssemblyName,
-                    FullName = info.FullName,
                     PermissionUrl=info.PermissionUrl,
                     Sort=info.Sort,
                     Describe=info.Describe,
@@ -86,95 +82,80 @@ namespace GPermission.Denormalizers
         /// </summary>
         public Task<AsyncTaskResult> HandleAsync(PermissionChanged evnt)
         {
-            return TryUpdateRecordAsync(connection =>
+            return TryUpdateRecordAsync(connection => connection.UpdateAsync(new
             {
-                return connection.UpdateAsync(new
-                {
-                    UseFlag = evnt.UseFlag,
-                    Version = evnt.Version,
-                    EventSequence = evnt.Sequence
-                }, new
-                {
-                    PermissionId = evnt.AggregateRootId,
-                    Version = evnt.Version - 1
-                }, ConfigSettings.PermissionTable);
-            });
+                UseFlag = evnt.UseFlag,
+                Version = evnt.Version,
+                EventSequence = evnt.Sequence
+            }, new
+            {
+                PermissionId = evnt.AggregateRootId,
+                Version = evnt.Version - 1
+            }, ConfigSettings.PermissionTable));
         }
 
         /// <summary>设置权限可见
         /// </summary>
         public Task<AsyncTaskResult> HandleAsync(PermissionVisibled evnt)
         {
-            return TryUpdateRecordAsync(connection =>
+            return TryUpdateRecordAsync(connection => connection.UpdateAsync(new
             {
-                return connection.UpdateAsync(new
-                {
-                    IsVisible=(int)BoolEnum.True,
-                    Version=evnt.Version,
-                    EventSequence=evnt.Sequence
-                }, new
-                {
-                    PermissionId=evnt.AggregateRootId,
-                    Version=evnt.Version-1
-                }, ConfigSettings.PermissionTable);
-            });
+                IsVisible=(int)BoolEnum.True,
+                Version=evnt.Version,
+                EventSequence=evnt.Sequence
+            }, new
+            {
+                PermissionId=evnt.AggregateRootId,
+                Version=evnt.Version-1
+            }, ConfigSettings.PermissionTable));
         }
 
         /// <summary>设置权限不可见
         /// </summary>
         public Task<AsyncTaskResult> HandleAsync(PermissionInVisibled evnt)
         {
-            return TryUpdateRecordAsync(connection =>
+            return TryUpdateRecordAsync(connection => connection.UpdateAsync(new
             {
-                return connection.UpdateAsync(new
-                {
-                    IsVisible=(int)BoolEnum.False,
-                    Version = evnt.Version,
-                    EventSequence = evnt.Sequence
-                }, new
-                {
-                    PermissionId = evnt.AggregateRootId,
-                    Version = evnt.Version - 1
-                }, ConfigSettings.PermissionTable);
-            });
+                IsVisible=(int)BoolEnum.False,
+                Version = evnt.Version,
+                EventSequence = evnt.Sequence
+            }, new
+            {
+                PermissionId = evnt.AggregateRootId,
+                Version = evnt.Version - 1
+            }, ConfigSettings.PermissionTable));
         }
 
         /// <summary>锁定权限
         /// </summary>
         public Task<AsyncTaskResult> HandleAsync(PermissionLocked evnt)
         {
-            return TryUpdateRecordAsync(connection =>
+            return TryUpdateRecordAsync(connection => connection.UpdateAsync(new
             {
-                return connection.UpdateAsync(new
-                {
-                    Status = PermissionStatus.Locked.ToString(),
-                    Version = evnt.Version,
-                    EventSequence = evnt.Sequence
-                }, new
-                {
-                    PermissionId = evnt.AggregateRootId,
-                    Version = evnt.Version - 1
-                }, ConfigSettings.PermissionTable);
-            });
+                Status = PermissionStatus.Locked.ToString(),
+                Version = evnt.Version,
+                EventSequence = evnt.Sequence
+            }, new
+            {
+                PermissionId = evnt.AggregateRootId,
+                Version = evnt.Version - 1
+            }, ConfigSettings.PermissionTable));
         }
 
         /// <summary>解锁权限
         /// </summary>
         public Task<AsyncTaskResult> HandleAsync(PermissionUnLock evnt)
         {
-            return TryUpdateRecordAsync(connection =>
+            return TryUpdateRecordAsync(connection => connection.UpdateAsync(new
             {
-                return connection.UpdateAsync(new
-                {
-                    Status = PermissionStatus.Normal.ToString(),
-                    Version = evnt.Version,
-                    EventSequence = evnt.Sequence
-                }, new
-                {
-                    PermissionId = evnt.AggregateRootId,
-                    Version = evnt.Version - 1
-                }, ConfigSettings.PermissionTable);
-            });
+                Status = PermissionStatus.Normal.ToString(),
+                Version = evnt.Version,
+                EventSequence = evnt.Sequence
+            }, new
+            {
+                PermissionId = evnt.AggregateRootId,
+                Version = evnt.Version - 1
+            }, ConfigSettings.PermissionTable));
         }
     }
 }

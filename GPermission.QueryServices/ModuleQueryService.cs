@@ -28,15 +28,14 @@ namespace GPermission.QueryServices
 
         /// <summary>根据系统Id和模块编号查询模块
         /// </summary>
-        public ModuleInfo FindByCode(string appSystemId, string code)
+        public ModuleInfo FindByCode(string code)
         {
             using (var connection = GetConnection())
             {
                 return connection.QueryList(new
                 {
-                    AppSystemId=appSystemId,
                     Code = code,
-                    UseFlag = (int)UseFlag.Useable
+                    UseFlag = (int) UseFlag.Useable
                 }, ConfigSettings.ModuleTable).FirstOrDefault();
             }
         }

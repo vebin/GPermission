@@ -13,7 +13,7 @@ namespace GPermission.IQueryServices
 
         /// <summary>根据系统Id和模块编号查询模块
         /// </summary>
-        ModuleInfo FindByCode(string appSystemId, string code);
+        ModuleInfo FindByCode(string code);
 
         /// <summary>查询某个模块类型的最高级模块
         /// </summary>

@@ -23,12 +23,6 @@
         /// <summary>链接地址
         /// </summary>
         public string LinkUrl { get; set; }
-        /// <summary>类的全名称
-        /// </summary>
-        public string AssemblyName { get; set; }
-        /// <summary>全名称
-        /// </summary>
-        public string FullName { get; set; }
         /// <summary>排序
         /// </summary>
         public int Sort { get; set; }
@@ -39,7 +33,9 @@
         /// <summary>备注
         /// </summary>
         public string ReMark { get; set; }
-        public ModuleInfo(string appSystemId, string code, string name, string moduleType, string parentModule="", string linkUrl="", string assemblyName="", string fullName = "",int sort=0,string describe="",string reMark="")
+
+        public ModuleInfo(string appSystemId, string code, string name, string moduleType, string parentModule = "",
+            string linkUrl = "", int sort = 0, string describe = "", string reMark = "")
         {
             AppSystemId = appSystemId;
             Code = code;
@@ -47,8 +43,6 @@
             ModuleType = moduleType;
             ParentModule = parentModule;
             LinkUrl = linkUrl;
-            AssemblyName = assemblyName;
-            FullName = fullName;
             Sort = sort;
             Describe = describe;
             ReMark = reMark;

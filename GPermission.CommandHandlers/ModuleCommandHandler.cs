@@ -28,12 +28,13 @@ namespace GPermission.CommandHandlers
         , ICommandHandler<DetachModulePermission>                               //移除模块权限
         , ICommandHandler<UpdateModulePermission>                               //更新模块权限
     {
-        private ILockService _lockService;
-        private ModuleService _moduleService;
-        private PermissionService _permissionService;
-        private AppSystemService _appSystemService;
+        private readonly ILockService _lockService;
+        private readonly ModuleService _moduleService;
+        private readonly PermissionService _permissionService;
+        private readonly AppSystemService _appSystemService;
 
-        public ModuleCommandHandler(ILockService lockService, ModuleService moduleService, PermissionService permissionService, AppSystemService appSystemService)
+        public ModuleCommandHandler(ILockService lockService, ModuleService moduleService,
+            PermissionService permissionService, AppSystemService appSystemService)
         {
             _lockService = lockService;
             _moduleService = moduleService;
@@ -45,11 +46,20 @@ namespace GPermission.CommandHandlers
         /// </summary>
         public void Handle(ICommandContext context, CreateModule command)
         {
-            _lockService.ExecuteInLock(typeof(Module).Name, () =>
+            _lockService.ExecuteInLock(typeof (Module).Name, () =>
             {
                 _moduleService.Exist(command.ParentModule);
                 _appSystemService.CheckExist(command.AppSystemId);
-                var info = new ModuleInfo(command.AppSystemId, command.Code, command.Name, command.ModuleType, command.ParentModule, command.LinkUrl, command.AssemblyName, command.FullName, command.Sort,command.Describe, command.ReMark);
+                var info = new ModuleInfo(
+                    command.AppSystemId,
+                    command.Code,
+                    command.Name,
+                    command.ModuleType,
+                    command.ParentModule,
+                    command.LinkUrl,
+                    command.Sort,
+                    command.Describe,
+                    command.ReMark);
                 context.Add(new Module(command.AggregateRootId, info, command.VerifyType, command.IsVisible));
             });
         }
@@ -58,10 +68,17 @@ namespace GPermission.CommandHandlers
         /// </summary>
         public void Handle(ICommandContext context, UpdateModule command)
         {
-            _lockService.ExecuteInLock(typeof(Module).Name, () =>
+            _lockService.ExecuteInLock(typeof (Module).Name, () =>
             {
                 _moduleService.Exist(command.ParentModule);
-                var info = new ModuleEditableInfo(command.Name, command.ParentModule, command.ModuleType, command.LinkUrl, command.AssemblyName, command.FullName, command.Sort, command.Describe, command.ReMark);
+                var info = new ModuleEditableInfo(
+                    command.Name,
+                    command.ParentModule,
+                    command.ModuleType,
+                    command.LinkUrl,
+                    command.Sort,
+                    command.Describe,
+                    command.ReMark);
                 context.Get<Module>(command.AggregateRootId).Update(info, command.VerifyType, command.IsVisible);
             });
         }

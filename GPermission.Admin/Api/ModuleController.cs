@@ -51,8 +51,6 @@ namespace GPermission.Admin.Api
                 dto.IsVisible,
                 dto.ParentModule,
                 dto.LinkUrl,
-                dto.AssemblyName,
-                dto.FullName,
                 dto.Sort,
                 dto.Describe,
                 dto.ReMark);
@@ -75,8 +73,6 @@ namespace GPermission.Admin.Api
                 dto.VerifyType,
                 dto.IsVisible,
                 dto.LinkUrl,
-                dto.AssemblyName,
-                dto.FullName,
                 dto.Sort,
                 dto.Describe,
                 dto.ReMark);

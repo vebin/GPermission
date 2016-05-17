@@ -22,12 +22,6 @@ namespace GPermission.Domain.Modules
         /// <summary>链接地址
         /// </summary>
         public string LinkUrl { get; set; }
-        /// <summary>全名称
-        /// </summary>
-        public string AssemblyName { get; set; }
-        /// <summary>全名称
-        /// </summary>
-        public string FullName { get; set; }
         /// <summary>排序
         /// </summary>
         public int Sort { get; set; }
@@ -38,14 +32,13 @@ namespace GPermission.Domain.Modules
         /// </summary>
         public string ReMark { get; set; }
 
-        public ModuleEditableInfo(string name, string moduleType, string parentModule,string linkUrl,string assemblyName="",string fullName="",int sort=0,string describe="",string reMark="")
+        public ModuleEditableInfo(string name, string moduleType, string parentModule, string linkUrl, int sort = 0,
+            string describe = "", string reMark = "")
         {
             Name = name;
             ParentModule = parentModule;
             ModuleType = moduleType;
             LinkUrl = linkUrl;
-            AssemblyName = assemblyName;
-            FullName = fullName;
             Sort = sort;
             Describe = describe;
             ReMark = reMark;

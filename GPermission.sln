@@ -50,6 +50,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{FF04F0
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{0C45C904-3FA5-4C07-9D24-6F4664B63474}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GPermission.UnitTest", "Test\GPermission.UnitTest\GPermission.UnitTest.csproj", "{803EE81C-54FB-4D4A-9ECC-9F7EB32E4411}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -120,6 +124,10 @@ Global
 		{463B0D74-1FCA-4B13-B526-B98BB908A6FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{463B0D74-1FCA-4B13-B526-B98BB908A6FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{463B0D74-1FCA-4B13-B526-B98BB908A6FB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{803EE81C-54FB-4D4A-9ECC-9F7EB32E4411}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{803EE81C-54FB-4D4A-9ECC-9F7EB32E4411}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{803EE81C-54FB-4D4A-9ECC-9F7EB32E4411}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{803EE81C-54FB-4D4A-9ECC-9F7EB32E4411}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -132,5 +140,6 @@ Global
 		{D9363331-E67C-4002-BC2C-2F0DFD8DEFC9} = {A21AEE5B-FB12-42CC-8295-8B3C05B38D6C}
 		{A393A74B-9E87-4333-A76A-37F044B0BCF7} = {83756725-3932-4C43-9804-54E99F2878FF}
 		{463B0D74-1FCA-4B13-B526-B98BB908A6FB} = {83756725-3932-4C43-9804-54E99F2878FF}
+		{803EE81C-54FB-4D4A-9ECC-9F7EB32E4411} = {0C45C904-3FA5-4C07-9D24-6F4664B63474}
 	EndGlobalSection
 EndGlobal

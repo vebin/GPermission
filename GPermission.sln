@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.40629.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GPermission.Common", "GPermission.Common\GPermission.Common.csproj", "{5D346CB6-9956-492B-8AB4-25C0F340D106}"
 EndProject
@@ -15,15 +15,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GPermission.CommandHandlers
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GPermission.Repositories.Dapper", "GPermission.Repositories.Dapper\GPermission.Repositories.Dapper.csproj", "{3D6C6049-1A59-4F62-A122-45434EEE6D4C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GPermission.ProcessManagers", "GPermission.ProcessManagers\GPermission.ProcessManagers.csproj", "{5425C9B0-75A7-44E4-9B93-1D6CB23B860D}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GPermission.Messages", "GPermission.Messages\GPermission.Messages.csproj", "{6D45E762-CB79-470B-9235-DBFCE5F8CE54}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GPermission.QueryServices", "GPermission.QueryServices\GPermission.QueryServices.csproj", "{8CCF1D74-90E6-4DBB-A56B-66E23346CB80}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GPermission.IQueryServices", "GPermission.IQueryServices\GPermission.IQueryServices.csproj", "{3FDE0207-5BBE-4C29-A824-038134F4E698}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GPermission.MessagePublishers", "GPermission.MessagePublishers\GPermission.MessagePublishers.csproj", "{FDEF7400-DA35-4462-A428-B4ED58F65E1B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GPermission.ApplicationServices", "GPermission.ApplicationServices\GPermission.ApplicationServices.csproj", "{95BF0929-6688-4B85-8A19-886EF6546E36}"
 EndProject
@@ -35,20 +29,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Host", "Host", "{83756725-3
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{8ADDC801-8CA0-4E32-BEDF-BDEE21018373}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ClientSDK", "ClientSDK", "{A21AEE5B-FB12-42CC-8295-8B3C05B38D6C}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GPermission.Client", "Client\GPermission.Client\GPermission.Client.csproj", "{D9363331-E67C-4002-BC2C-2F0DFD8DEFC9}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GPermission.Admin", "GPermission.Admin\GPermission.Admin.csproj", "{A393A74B-9E87-4333-A76A-37F044B0BCF7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GPermission.WebApi", "GPermission.WebApi\GPermission.WebApi.csproj", "{463B0D74-1FCA-4B13-B526-B98BB908A6FB}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{FF04F049-280A-4DD2-B3A4-79E21C8EB479}"
-	ProjectSection(SolutionItems) = preProject
-		.nuget\NuGet.Config = .nuget\NuGet.Config
-		.nuget\NuGet.exe = .nuget\NuGet.exe
-		.nuget\NuGet.targets = .nuget\NuGet.targets
-	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{0C45C904-3FA5-4C07-9D24-6F4664B63474}"
 EndProject
@@ -84,14 +67,6 @@ Global
 		{3D6C6049-1A59-4F62-A122-45434EEE6D4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3D6C6049-1A59-4F62-A122-45434EEE6D4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3D6C6049-1A59-4F62-A122-45434EEE6D4C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5425C9B0-75A7-44E4-9B93-1D6CB23B860D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5425C9B0-75A7-44E4-9B93-1D6CB23B860D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5425C9B0-75A7-44E4-9B93-1D6CB23B860D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5425C9B0-75A7-44E4-9B93-1D6CB23B860D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6D45E762-CB79-470B-9235-DBFCE5F8CE54}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6D45E762-CB79-470B-9235-DBFCE5F8CE54}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6D45E762-CB79-470B-9235-DBFCE5F8CE54}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6D45E762-CB79-470B-9235-DBFCE5F8CE54}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8CCF1D74-90E6-4DBB-A56B-66E23346CB80}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8CCF1D74-90E6-4DBB-A56B-66E23346CB80}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8CCF1D74-90E6-4DBB-A56B-66E23346CB80}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -100,10 +75,6 @@ Global
 		{3FDE0207-5BBE-4C29-A824-038134F4E698}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3FDE0207-5BBE-4C29-A824-038134F4E698}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3FDE0207-5BBE-4C29-A824-038134F4E698}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FDEF7400-DA35-4462-A428-B4ED58F65E1B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FDEF7400-DA35-4462-A428-B4ED58F65E1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FDEF7400-DA35-4462-A428-B4ED58F65E1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FDEF7400-DA35-4462-A428-B4ED58F65E1B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{95BF0929-6688-4B85-8A19-886EF6546E36}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{95BF0929-6688-4B85-8A19-886EF6546E36}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{95BF0929-6688-4B85-8A19-886EF6546E36}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -112,10 +83,6 @@ Global
 		{8EB00FBB-1814-46AA-BF81-DC9C5603CD84}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8EB00FBB-1814-46AA-BF81-DC9C5603CD84}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8EB00FBB-1814-46AA-BF81-DC9C5603CD84}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D9363331-E67C-4002-BC2C-2F0DFD8DEFC9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D9363331-E67C-4002-BC2C-2F0DFD8DEFC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D9363331-E67C-4002-BC2C-2F0DFD8DEFC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D9363331-E67C-4002-BC2C-2F0DFD8DEFC9}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A393A74B-9E87-4333-A76A-37F044B0BCF7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A393A74B-9E87-4333-A76A-37F044B0BCF7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A393A74B-9E87-4333-A76A-37F044B0BCF7}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -137,7 +104,6 @@ Global
 		{8CCF1D74-90E6-4DBB-A56B-66E23346CB80} = {B03DA1F6-A2EF-4409-BEAD-AB3B141CC879}
 		{3FDE0207-5BBE-4C29-A824-038134F4E698} = {B03DA1F6-A2EF-4409-BEAD-AB3B141CC879}
 		{8EB00FBB-1814-46AA-BF81-DC9C5603CD84} = {83756725-3932-4C43-9804-54E99F2878FF}
-		{D9363331-E67C-4002-BC2C-2F0DFD8DEFC9} = {A21AEE5B-FB12-42CC-8295-8B3C05B38D6C}
 		{A393A74B-9E87-4333-A76A-37F044B0BCF7} = {83756725-3932-4C43-9804-54E99F2878FF}
 		{463B0D74-1FCA-4B13-B526-B98BB908A6FB} = {83756725-3932-4C43-9804-54E99F2878FF}
 		{803EE81C-54FB-4D4A-9ECC-9F7EB32E4411} = {0C45C904-3FA5-4C07-9D24-6F4664B63474}

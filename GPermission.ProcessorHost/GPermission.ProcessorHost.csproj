@@ -123,18 +123,6 @@
       <Project>{3fde0207-5bbe-4c29-a824-038134f4e698}</Project>
       <Name>GPermission.IQueryServices</Name>
     </ProjectReference>
-    <ProjectReference Include="..\GPermission.MessagePublishers\GPermission.MessagePublishers.csproj">
-      <Project>{fdef7400-da35-4462-a428-b4ed58f65e1b}</Project>
-      <Name>GPermission.MessagePublishers</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\GPermission.Messages\GPermission.Messages.csproj">
-      <Project>{6d45e762-cb79-470b-9235-dbfce5f8ce54}</Project>
-      <Name>GPermission.Messages</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\GPermission.ProcessManagers\GPermission.ProcessManagers.csproj">
-      <Project>{5425c9b0-75a7-44e4-9b93-1d6cb23b860d}</Project>
-      <Name>GPermission.ProcessManagers</Name>
-    </ProjectReference>
     <ProjectReference Include="..\GPermission.QueryServices\GPermission.QueryServices.csproj">
       <Project>{8ccf1d74-90e6-4dbb-a56b-66e23346cb80}</Project>
       <Name>GPermission.QueryServices</Name>
@@ -145,13 +133,6 @@
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
-  </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

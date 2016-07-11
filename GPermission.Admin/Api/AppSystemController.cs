@@ -63,7 +63,7 @@ namespace GPermission.Admin.Api
         }
 
         //更新密钥
-        public async Task<HandleResult> Put(string id)
+        public async Task<HandleResult> Patch(string id)
         {
             var command = new UpdateSafeKey(id);
             var result = await ExecuteCommandAsync(command);

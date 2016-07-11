@@ -27,7 +27,7 @@ namespace GPermission.Admin
 
 
             InitializeECommon();
-            InitializeENode();
+           // InitializeENode();
         }
         private void InitializeECommon()
         {

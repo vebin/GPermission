@@ -4,13 +4,15 @@ using GPermission.Common.Enums;
 using GPermission.IQueryServices;
 using System.Collections.Generic;
 using System.Linq;
+using ECommon.Components;
 using GPermission.IQueryServices.DTOs;
 
 namespace GPermission.QueryServices
 {
-    /// <summary>应用系统查询
-    /// </summary>
-    public class AppSystemQueryService : BaseQueryService, IAppSystemQueryService
+	/// <summary>应用系统查询
+	/// </summary>
+	[Component]
+	public class AppSystemQueryService : BaseQueryService, IAppSystemQueryService
     {
         /// <summary>根据系统Id查询系统
         /// </summary>

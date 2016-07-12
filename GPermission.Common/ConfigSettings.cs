@@ -57,7 +57,7 @@ namespace GPermission.Common
         /// </summary>
         public static string AccountTable { get; set; }
 
-        public static IPAddress BrokerIp { get; set; }
+        public static IPAddress BrokerAddress { get; set; }
         public static int BrokerProducerPort { get; set; }
         public static int BrokerConsumerPort { get; set; }
         public static int BrokerAdminPort { get; set; }
@@ -87,24 +87,24 @@ namespace GPermission.Common
             ModulePermissionTable = "ModulePermission";
             AccountTable = "Account";
 
-            if (ConfigurationManager.ConnectionStrings["BrokerIp"] != null)
+            if (ConfigurationManager.AppSettings["BrokerAddress"] != null)
             {
-                BrokerIp = IPAddress.Parse(ConfigurationManager.AppSettings["BrokerIp"]);
+                BrokerAddress = IPAddress.Parse(ConfigurationManager.AppSettings["BrokerAddress"]);
             }
-            if (ConfigurationManager.ConnectionStrings["BrokerProducerPort"] != null)
+            if (ConfigurationManager.AppSettings["BrokerProducerPort"] != null)
             {
                 BrokerProducerPort = int.Parse(ConfigurationManager.AppSettings["BrokerProducerPort"]);
             }
-            if (ConfigurationManager.ConnectionStrings["BrokerConsumerPort"] != null)
+            if (ConfigurationManager.AppSettings["BrokerConsumerPort"] != null)
             {
                 BrokerConsumerPort = int.Parse(ConfigurationManager.AppSettings["BrokerConsumerPort"]);
             }
 
-            if (ConfigurationManager.ConnectionStrings["BrokerAdminPort"] != null)
+            if (ConfigurationManager.AppSettings["BrokerAdminPort"] != null)
             {
                 BrokerAdminPort = int.Parse(ConfigurationManager.AppSettings["BrokerAdminPort"]);
             }
-            if (ConfigurationManager.ConnectionStrings["CommandBindingPort"] != null)
+            if (ConfigurationManager.AppSettings["CommandBindingPort"] != null)
             {
                 CommandBindingPort = int.Parse(ConfigurationManager.AppSettings["CommandBindingPort"]);
             }

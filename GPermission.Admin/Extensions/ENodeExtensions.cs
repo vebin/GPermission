@@ -21,8 +21,8 @@ namespace GPermission.Admin.Extensions
 
             _commandService = new CommandService(new CommandResultProcessor(new IPEndPoint(ConfigSettings.CommandBindingPort, 9002)), new ProducerSetting
             {
-                BrokerAddress = new IPEndPoint(ConfigSettings.BrokerIp, ConfigSettings.BrokerProducerPort),
-                BrokerAdminAddress = new IPEndPoint(ConfigSettings.BrokerIp, ConfigSettings.BrokerAdminPort)
+                BrokerAddress = new IPEndPoint(ConfigSettings.BrokerAddress, ConfigSettings.BrokerProducerPort),
+                BrokerAdminAddress = new IPEndPoint(ConfigSettings.BrokerAddress, ConfigSettings.BrokerAdminPort)
             });
 
             configuration.SetDefault<ICommandService, CommandService>(_commandService);

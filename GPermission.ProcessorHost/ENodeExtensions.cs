@@ -33,13 +33,13 @@ namespace GPermission.ProcessorHost
 
             var producerSetting = new ProducerSetting
             {
-                BrokerAddress = new IPEndPoint(ConfigSettings.BrokerIp, ConfigSettings.BrokerProducerPort),
-                BrokerAdminAddress = new IPEndPoint(ConfigSettings.BrokerIp, ConfigSettings.BrokerAdminPort)
+                BrokerAddress = new IPEndPoint(ConfigSettings.BrokerAddress, ConfigSettings.BrokerProducerPort),
+                BrokerAdminAddress = new IPEndPoint(ConfigSettings.BrokerAddress, ConfigSettings.BrokerAdminPort)
             };
             var consumerSetting = new ConsumerSetting
             {
-                BrokerAddress = new IPEndPoint(ConfigSettings.BrokerIp, ConfigSettings.BrokerConsumerPort),
-                BrokerAdminAddress = new IPEndPoint(ConfigSettings.BrokerIp, ConfigSettings.BrokerAdminPort)
+                BrokerAddress = new IPEndPoint(ConfigSettings.BrokerAddress, ConfigSettings.BrokerConsumerPort),
+                BrokerAdminAddress = new IPEndPoint(ConfigSettings.BrokerAddress, ConfigSettings.BrokerAdminPort)
             };
 
             _applicationMessagePublisher = new ApplicationMessagePublisher(producerSetting);
